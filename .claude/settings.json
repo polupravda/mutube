@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk grep *)",
+      "Bash(rtk tsc *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(echo \"refs-exit:$?\")",
+      "Bash(rtk npx *)",
+      "Bash(echo \"started pid $!\")",
+      "Bash(rtk curl *)",
+      "Bash(pkill -f \"vite --port 5199\")",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Super Why\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Super Why\" --replace)",
+      "Bash(python3 -c ' *)",
+      "Bash(node scripts/extract-watch-ids.mjs run-regex.html regex-output.md)",
+      "Bash(sed -n '1,3p' regex-output.md)",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Numberblocks\")",
+      "Bash(sed -n '3p' regex-output.md)",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Wild Kratts\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Dr. Binocs\")",
+      "Bash(node scripts/split-collections.mjs \"mutube-backup-2026-06-04 \\(1\\).json\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Xavier Riddle\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Wordgirl\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Peg + Cat\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Octonauts\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Alan Becker\")",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"git check-ignore .env -> $\\(git check-ignore .env || echo 'NOT IGNORED'\\)\")"
+    ]
+  }
+}

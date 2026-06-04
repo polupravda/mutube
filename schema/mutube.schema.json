@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mutube.local/schema/mutube.schema.json",
+  "title": "Mutube data file",
+  "description": "Portable Mutube library document. This is the on-disk format written to mutube.data.json and produced by Export. Keep `version` in sync with AppData['version'] in src/types.ts.",
+  "type": "object",
+  "required": ["version", "collections", "videos", "videoOrder", "settings"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "description": "Schema version. Bump when the shape changes incompatibly.",
+      "const": 1
+    },
+    "collections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/collection" }
+    },
+    "videos": {
+      "description": "All known videos keyed by YouTube video ID.",
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/video" }
+    },
+    "videoOrder": {
+      "description": "Display order of the home 'All videos' grid. Newest-added first by default; reorderable. Should contain exactly the keys of `videos`.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "settings": { "$ref": "#/$defs/settings" }
+  },
+  "$defs": {
+    "video": {
+      "type": "object",
+      "required": ["id", "title", "channelTitle", "thumbnailUrl", "durationSeconds", "embeddable", "addedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "description": "YouTube video ID; also the dedup key." },
+        "title": { "type": "string", "description": "Original YouTube title." },
+        "alias": { "type": "string", "description": "Parent-assigned display name. Defaults to title when absent. The only field home search matches." },
+        "channelTitle": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "durationSeconds": { "type": "integer", "minimum": 0 },
+        "embeddable": { "type": "boolean", "description": "Whether the video can play in an embedded player." },
+        "addedAt": { "type": "string", "format": "date-time", "description": "ISO timestamp of when the parent added it." }
+      }
+    },
+    "collection": {
+      "type": "object",
+      "required": ["id", "name", "videoIds"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "emoji": { "type": "string", "description": "Optional kid-friendly icon for the collection card." },
+        "coverVideoId": { "type": "string", "description": "Optional video whose thumbnail is the collection cover. Falls back to emoji." },
+        "videoIds": {
+          "type": "array",
+          "description": "Ordered list of all video IDs in this collection (union of its sub-lists).",
+          "items": { "type": "string" }
+        },
+        "subCollections": {
+          "type": "array",
+          "description": "Optional sub-lists (seasons/topics) shown grouped under the collection.",
+          "items": { "$ref": "#/$defs/subCollection" }
+        }
+      }
+    },
+    "subCollection": {
+      "type": "object",
+      "required": ["id", "name", "videoIds"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "videoIds": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "parentPinHash": { "type": "string", "description": "Hash of the parent PIN. Absent => no PIN set." },
+        "sourceUrl": { "type": "string", "description": "URL of the external JSON document used as the library database. Loaded on startup when set." }
+      }
+    }
+  }
+}
