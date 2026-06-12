@@ -356,6 +356,59 @@ removable via embed params). That's the accepted trade-off of using native contr
 
 ---
 
+## 10. Session timer + per-session collection blacklist
+
+**Goal:** A timed kid "session" with a 5-minute warning and a hard stop, plus a
+blacklist of collections limited to one video per session.
+
+**Confirmed decisions:** session/blacklist state **persists in localStorage**
+(refresh can't bypass it); the limit is **one blacklisted video total per
+session**, counted **when the video finishes**; the blacklist references
+collections **by id**.
+
+**Pieces:**
+- [`useSession`](../src/state/useSession.tsx) — provider holding `{ startedAt,
+  pausedAt, durationMin, defaultDurationMin, warningShown, blacklistUsed }` in
+  localStorage. Derives `phase` (`idle`/`running`/`over`) and `remainingMs`.
+  **The timer counts only actual watch time:** it starts frozen and advances only
+  while a video is playing. `PlayerView` calls `setWatching(playing)` from the
+  YouTube `onStateChange` (and `false` on unmount); `setWatching` shifts
+  `startedAt` so paused/browsing time isn't counted. There is no manual pause
+  button. `sessionPause` (forces the *player* to pause) is true only during the
+  warning popup and when over. A PIN-free **Stop** ends the timer.
+- **Blacklist config** lives in the library JSON as a top-level `blacklist: string[]`
+  (collection ids) — [`types.ts`](../src/types.ts), [`schema`](../schema/mutube.schema.json);
+  "JJ and Mikey" is seeded. The per-session *used* flag is `blacklistUsed` in
+  session state (not the library).
+- **Overlays** ([`SessionOverlays.tsx`](../src/components/kid/SessionOverlays.tsx)):
+  `SessionWarningPopup` (pink, "5 minutes left", 3s) is rendered **globally in the
+  App shell** so it works in both modes (incl. the admin test button);
+  `SessionOverScreen` (pink, "Session is over" + PIN) is rendered in `KidApp` so
+  its PIN exit can reset kid navigation.
+- **PIN** ([`PinPad.tsx`](../src/components/kid/PinPad.tsx)) — hardcoded `4321`,
+  separate from the hashed parent PIN. Gates "end session → home" and "reset limit".
+- **Header controls** ([`SessionControls.tsx`](../src/components/kid/SessionControls.tsx))
+  on the kid home: start a session (editable minutes, default 120), live
+  countdown, and a PIN-gated **Reset limit** (clears `blacklistUsed` without
+  touching the timer).
+- **Player** ([`PlayerView.tsx`](../src/components/kid/PlayerView.tsx)) re-acquired
+  a player ref (`onReady`) to pause/resume on `sessionPause`. For blacklisted
+  playback it **hides the recommendations panel** and, on `onEnd`, calls
+  `markBlacklistUsed()` + returns home.
+- **Home** ([`HomeView.tsx`](../src/components/kid/HomeView.tsx)) overlays a
+  non-interactive blue-70% "1 video only" banner over blacklisted sections once
+  `blacklistUsed` is set, blocking re-entry.
+- **Settings** has a "Session" card: default-minutes input + "Test popup" button.
+
+**Trade-offs / notes:**
+- Counting **on finish** (the user's choice) means a kid could start/back-out of
+  blacklisted videos without consuming the allowance; only completing one locks it.
+- The hardcoded `4321` is a placeholder; swap for a real check before real use.
+- Sessions are **opt-in** (started from the header). `blacklistUsed` is cleared by
+  starting a session or the Reset-limit button.
+
+---
+
 ## Conventions for this doc
 
 - One section per feature/decision; newest at the bottom.

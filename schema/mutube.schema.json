@@ -4,7 +4,7 @@
   "title": "Mutube data file",
   "description": "Portable Mutube library document. This is the on-disk format written to mutube.data.json and produced by Export. Keep `version` in sync with AppData['version'] in src/types.ts.",
   "type": "object",
-  "required": ["version", "collections", "videos", "videoOrder", "settings"],
+  "required": ["version", "collections", "videos", "videoOrder", "blacklist", "settings"],
   "additionalProperties": false,
   "properties": {
     "version": {
@@ -22,6 +22,11 @@
     },
     "videoOrder": {
       "description": "Display order of the home 'All videos' grid. Newest-added first by default; reorderable. Should contain exactly the keys of `videos`.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blacklist": {
+      "description": "Collection IDs limited to one video per session (kid mode); these also hide the player recommendations panel.",
       "type": "array",
       "items": { "type": "string" }
     },

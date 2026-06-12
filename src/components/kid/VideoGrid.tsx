@@ -1,5 +1,6 @@
 import { type Video, videoName } from '../../types'
 import { FloatingControls } from './FloatingControls'
+import { HeaderLogo } from './HeaderLogo'
 
 /** Grid of the videos in one sub-list (season/topic). */
 export function VideoGrid({
@@ -7,21 +8,24 @@ export function VideoGrid({
   videos,
   onPick,
   onBack,
+  onHome,
 }: {
   title: string
   videos: Video[]
   onPick: (index: number) => void
   onBack: () => void
+  onHome: () => void
 }) {
   return (
     <div className="kid kid-videos">
       <FloatingControls onBack={onBack} />
       <header className="kid-header">
-        <span />
-        <h1 className="logo">{title}</h1>
-        <span />
+        <span className="header-side" />
+        <HeaderLogo onHome={onHome} />
+        <span className="header-side" />
       </header>
 
+      <h2 className="section-title">{title}</h2>
       <div className="card-grid">
         {videos.map((v, i) => (
           <button key={v.id} className="big-card video-tile" onClick={() => onPick(i)}>

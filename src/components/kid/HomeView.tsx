@@ -1,19 +1,26 @@
 import { type Collection, type SubCollection, type Video } from '../../types'
 import { FloatingControls } from './FloatingControls'
+import { HeaderLogo } from './HeaderLogo'
+import { SessionControls } from './SessionControls'
 
 /**
  * Kid home screen: collections only. Each collection is shown as a section with
  * its sub-lists (seasons/topics) displayed inline as tiles — no nested subpages.
- * Picking a sub-list opens its video grid.
+ * Picking a sub-list opens its video grid. Blacklisted collections show a
+ * "1 video only" lock once the session's one allowed video has been watched.
  */
 export function HomeView({
   collections,
   videoById,
+  blacklist,
+  blacklistLocked,
   onPickSub,
   onExitToParent,
 }: {
   collections: Collection[]
   videoById: (id: string) => Video | undefined
+  blacklist: string[]
+  blacklistLocked: boolean
   onPickSub: (collectionId: string, subId: string | null) => void
   onExitToParent: () => void
 }) {
@@ -36,11 +43,16 @@ export function HomeView({
     <div className="kid kid-home">
       <FloatingControls />
       <header className="kid-header">
-        <h1 className="logo">Mutube</h1>
-        {/* Subtle parent door, top corner, away from the fun stuff. */}
-        <button className="parent-door" onClick={onExitToParent} aria-label="Parent area" title="Parent area">
-          ⚙
-        </button>
+        <span className="header-side">
+          <SessionControls />
+        </span>
+        <HeaderLogo />
+        <span className="header-side header-right">
+          {/* Subtle parent door, top corner, away from the fun stuff. */}
+          <button className="parent-door" onClick={onExitToParent} aria-label="Parent area" title="Parent area">
+            ⚙
+          </button>
+        </span>
       </header>
 
       {sections.length === 0 ? (
@@ -51,8 +63,9 @@ export function HomeView({
       ) : (
         sections.map(({ collection: c, subs }) => {
           const hasRealSubs = Boolean(c.subCollections?.length)
+          const locked = blacklist.includes(c.id) && blacklistLocked
           return (
-            <section className="home-section" key={c.id}>
+            <section className={`home-section${locked ? ' locked' : ''}`} key={c.id}>
               <h2 className="section-title">
                 {c.emoji ? `${c.emoji} ` : ''}
                 {c.name}
@@ -72,6 +85,7 @@ export function HomeView({
                   </button>
                 ))}
               </div>
+              {locked && <div className="blacklist-banner">1 video only</div>}
             </section>
           )
         })

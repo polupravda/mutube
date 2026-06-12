@@ -69,11 +69,16 @@ export type AppData = {
    * reconciled with `videos` by {@link normalizeAppData}.
    */
   videoOrder: string[]
+  /**
+   * Collection IDs whose videos are limited to one per session (kid mode).
+   * Such collections also hide the player's recommendations panel.
+   */
+  blacklist: string[]
   settings: Settings
 }
 
 export function emptyAppData(): AppData {
-  return { version: 1, collections: [], videos: {}, videoOrder: [], settings: {} }
+  return { version: 1, collections: [], videos: {}, videoOrder: [], blacklist: [], settings: {} }
 }
 
 /**
@@ -87,6 +92,7 @@ export function coerceAppData(parsed: Partial<AppData>): AppData {
     collections: parsed.collections ?? [],
     videos: parsed.videos ?? {},
     videoOrder: parsed.videoOrder ?? [],
+    blacklist: parsed.blacklist ?? [],
     settings: parsed.settings ?? {},
   }
 }

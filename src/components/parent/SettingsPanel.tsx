@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAppData } from '../../state/useAppData'
+import { useSession } from '../../state/useSession'
 import { hashPin } from '../../state/pin'
 import { hasApiKey } from '../../api/youtube'
 import { hasLegacyData, migrateFromLocalStorage } from '../../storage/legacyMigration'
@@ -15,6 +16,7 @@ export function SettingsPanel() {
     reloadFromSource,
     markSyncedToSource,
   } = useAppData()
+  const { defaultDurationMin, setDefaultDuration, testWarning } = useSession()
   const hasPin = Boolean(data.settings.parentPinHash)
   const [pin, setPin] = useState('')
   const [confirm, setConfirm] = useState('')
@@ -23,6 +25,7 @@ export function SettingsPanel() {
   const [migrateMsg, setMigrateMsg] = useState('')
   const [sourceUrl, setSourceUrl] = useState(data.settings.sourceUrl ?? '')
   const [copyMsg, setCopyMsg] = useState('')
+  const [duration, setDuration] = useState(defaultDurationMin)
   const legacyPresent = hasLegacyData()
 
   async function savePin(e: React.FormEvent) {
@@ -113,6 +116,29 @@ export function SettingsPanel() {
           <button type="submit" disabled={!pin || !confirm}>{hasPin ? 'Change PIN' : 'Set PIN'}</button>
           {msg && <p className="muted">{msg}</p>}
         </form>
+      </div>
+
+      <div className="card">
+        <h3>Session</h3>
+        <p className="muted">
+          Default length for a watching session (started from the kid home header). At 5 minutes
+          left a “5 minutes left” popup shows and the video pauses; at 0 the session ends.
+        </p>
+        <div className="row">
+          <label className="field" style={{ margin: 0 }}>
+            Default minutes
+            <input
+              type="number"
+              min={1}
+              value={duration}
+              onChange={(e) => setDuration(Number(e.target.value))}
+              onBlur={() => setDefaultDuration(duration)}
+              style={{ width: 100 }}
+            />
+          </label>
+          <button className="ghost" onClick={() => setDefaultDuration(duration)}>Save default</button>
+          <button className="ghost" onClick={testWarning}>Test “5 minutes left” popup</button>
+        </div>
       </div>
 
       <div className="card">

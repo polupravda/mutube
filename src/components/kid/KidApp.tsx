@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { useAppData } from '../../state/useAppData'
+import { useSession } from '../../state/useSession'
 import { HomeView } from './HomeView'
 import { VideoGrid } from './VideoGrid'
 import { PlayerView } from './PlayerView'
+import { SessionOverScreen } from './SessionOverlays'
 import type { Video } from '../../types'
 
 /** An active playback session: the playlist shown in the player's sidebar. */
-type PlayContext = { videos: Video[]; index: number; title: string }
+type PlayContext = { videos: Video[]; index: number; title: string; blacklisted: boolean }
 /** Which sub-list grid is open. subId === null means the whole collection. */
 type Picked = { collectionId: string; subId: string | null }
 
@@ -17,15 +19,22 @@ type Picked = { collectionId: string; subId: string | null }
  */
 export function KidApp({ onExitToParent }: { onExitToParent: () => void }) {
   const { data } = useAppData()
+  const { blacklistUsed, markBlacklistUsed } = useSession()
   const [picked, setPicked] = useState<Picked | null>(null)
   const [play, setPlay] = useState<PlayContext | null>(null)
 
+  const blacklist = data.blacklist ?? []
   const videoById = (id: string) => data.videos[id]
   const playable = (ids: string[]) =>
     ids.map(videoById).filter((v): v is Video => Boolean(v?.embeddable))
 
+  const goHome = () => {
+    setPlay(null)
+    setPicked(null)
+  }
+
   // Resolve the picked sub-list to its videos + a display title.
-  let pickedView: { title: string; videos: Video[] } | null = null
+  let pickedView: { title: string; videos: Video[]; blacklisted: boolean } | null = null
   if (picked) {
     const collection = data.collections.find((c) => c.id === picked.collectionId)
     if (collection) {
@@ -34,42 +43,53 @@ export function KidApp({ onExitToParent }: { onExitToParent: () => void }) {
         : undefined
       const ids = sub ? sub.videoIds : collection.videoIds
       const title = sub ? `${collection.name} · ${sub.name}` : collection.name
-      pickedView = { title, videos: playable(ids) }
+      pickedView = { title, videos: playable(ids), blacklisted: blacklist.includes(collection.id) }
     }
   }
 
-  // Player view.
-  if (play && play.videos[play.index]) {
-    return (
-      <PlayerView
-        playlist={play.videos}
-        index={play.index}
-        title={play.title}
-        onSelect={(i) => setPlay((p) => (p ? { ...p, index: i } : p))}
-        onBack={() => setPlay(null)}
-      />
-    )
-  }
-
-  // Video grid for a chosen sub-list.
-  if (pickedView) {
-    return (
-      <VideoGrid
-        title={pickedView.title}
-        videos={pickedView.videos}
-        onPick={(i) => setPlay({ videos: pickedView!.videos, index: i, title: pickedView!.title })}
-        onBack={() => setPicked(null)}
-      />
-    )
-  }
-
-  // Home: collections with their sub-lists inline.
   return (
-    <HomeView
-      collections={data.collections}
-      videoById={videoById}
-      onPickSub={(collectionId, subId) => setPicked({ collectionId, subId })}
-      onExitToParent={onExitToParent}
-    />
+    <>
+      {/* Player view. */}
+      {play && play.videos[play.index] ? (
+        <PlayerView
+          playlist={play.videos}
+          index={play.index}
+          title={play.title}
+          blacklisted={play.blacklisted}
+          onSelect={(i) => setPlay((p) => (p ? { ...p, index: i } : p))}
+          onBlacklistFinished={() => { markBlacklistUsed(); goHome() }}
+          onBack={() => setPlay(null)}
+          onHome={goHome}
+        />
+      ) : pickedView ? (
+        // Video grid for a chosen sub-list.
+        <VideoGrid
+          title={pickedView.title}
+          videos={pickedView.videos}
+          onPick={(i) =>
+            setPlay({
+              videos: pickedView!.videos,
+              index: i,
+              title: pickedView!.title,
+              blacklisted: pickedView!.blacklisted,
+            })
+          }
+          onBack={() => setPicked(null)}
+          onHome={goHome}
+        />
+      ) : (
+        // Home: collections with their sub-lists inline.
+        <HomeView
+          collections={data.collections}
+          videoById={videoById}
+          blacklist={blacklist}
+          blacklistLocked={blacklistUsed}
+          onPickSub={(collectionId, subId) => setPicked({ collectionId, subId })}
+          onExitToParent={onExitToParent}
+        />
+      )}
+
+      <SessionOverScreen onExit={goHome} />
+    </>
   )
 }

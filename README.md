@@ -10,9 +10,12 @@ YouTube.
 - **Kid mode** (default): a big, tappable grid of collections → videos → a
   locked-down player with only Back / Previous / Next.
 
-Built with React + TypeScript + Vite. Data is stored **locally in the browser**
-(no backend, no cost), with JSON export/import to move your library between
-devices.
+Built with React + TypeScript + Vite. The library is a **portable JSON document**
+(schema in [`schema/mutube.schema.json`](schema/mutube.schema.json)): for testing
+it's read/written via a small Vite dev endpoint, and it can be backed by an
+external JSON file (GitHub/Google Drive) as a simple read-only "database", with
+Export/Import in Settings. Bulk-add whole playlists with the scripts in
+[`scripts/`](scripts/) (see §5).
 
 ---
 
@@ -57,9 +60,68 @@ Pages**, **Cloudflare Pages**, etc. (all free). `vite.config.ts` uses a relative
 
 ## 4. Moving your library to another device
 
-There's no backend, so the library lives in one browser. To copy it to the
-kids' tablet: parent area → **Backup → Export to file**, transfer the JSON, then
-**Import from file** on the other device.
+There's no backend. To copy your library to the kids' tablet: parent area →
+**Settings → Backup & data → Export**, transfer the JSON, then **Import** on the
+other device. Or set an **External source** URL (a GitHub raw / Google Drive link
+to the JSON) so the app loads it on startup.
+
+## 5. Bulk-importing a whole playlist (scripts)
+
+Adding videos one-by-one in the app is fine for a few; to import an entire
+YouTube playlist at once, use the scripts in [`scripts/`](scripts/). They read a
+saved playlist page, extract the video IDs (+ titles), and merge them into the
+library JSON ([`mutube-library.json`](mutube-library.json), the same format as
+Export/Import).
+
+**Step 1 — save the playlist page** into `run-regex.html` (repo root). Open the
+playlist on YouTube, then save the page (⌘S / "Save page as") or copy its HTML
+over `run-regex.html`. Both YouTube layouts are supported — the side-panel
+`watch?v=…` view and the `watch_videos?video_ids=…` list view — auto-detected.
+
+**Step 2 — add the videos to a collection:**
+
+```bash
+# append into a collection (created if it doesn't exist)
+node scripts/merge-ids-into-backup.mjs "Numberblocks"
+
+# add into a specific sub-list within a collection
+node scripts/merge-ids-into-backup.mjs "Numberblocks" "Season 3"
+
+# replace the target instead of appending (the sub-list if given, else the
+# whole collection); the rest of the library is left intact
+node scripts/merge-ids-into-backup.mjs "Numberblocks" "Season 3" --replace
+
+# operate on a different file
+node scripts/merge-ids-into-backup.mjs "Numberblocks" --file "other.json"
+```
+
+It de-dupes (safe to re-run), creates video records with titles/thumbnails from
+the page (duration is left `0` — not reliably available), keeps the library
+consistent (prunes orphans, errors on any dangling reference), and prints a
+summary.
+
+**Step 3 (optional) — auto-split into sub-lists** (seasons/topics shown grouped
+on the home page):
+
+```bash
+node scripts/split-collections.mjs            # defaults to mutube-library.json
+```
+
+Splitting rules live in the `STRATEGY` map in
+[`scripts/split-collections.mjs`](scripts/split-collections.mjs) (by season from
+title patterns, or by topic keyword buckets). A collection with no rule shows as
+a single tile. Note: re-running split **regenerates** sub-lists for collections
+that have a rule, overwriting any manual sub-list placement done in step 2 for
+those collections.
+
+**Step 4 — load it into the app:** parent area → **Settings → Import** the
+`mutube-library.json`, or point your **External source** URL at it.
+
+**Preview only** (writes a numbered ID list, changes nothing):
+
+```bash
+node scripts/extract-watch-ids.mjs            # run-regex.html -> regex-output.md
+```
 
 ---
 
@@ -87,11 +149,13 @@ your device's kiosk feature:
 ```
 src/
   api/youtube.ts            # parse video IDs, fetch metadata, format durations
-  storage/                  # StorageAdapter interface + LocalStorageAdapter
-  state/useAppData.tsx      # context + reducer + persistence
+  storage/                  # StorageAdapter + FileStorageAdapter, remoteSource, legacyMigration
+  state/useAppData.tsx      # context + reducer + persistence + external source
   state/pin.ts              # PIN hashing (soft lock)
-  components/kid/           # CollectionGrid, VideoGrid, PlayerView
-  components/parent/        # AddVideoForm, CollectionManager, Settings, ImportExport
+  components/kid/           # HomeView, VideoGrid, PlayerView, HeaderLogo, FloatingControls
+  components/parent/        # AddVideoForm, CollectionManager, SettingsPanel
+scripts/                    # bulk import: extract IDs + merge into mutube-library.json
+schema/mutube.schema.json   # the portable library file format
 ```
 
 ### Adding cloud sync later

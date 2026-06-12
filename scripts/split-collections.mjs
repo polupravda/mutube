@@ -5,15 +5,11 @@
 // Idempotent: recomputed from videoIds + titles each run; sub-collection ids are
 // derived from the name so they stay stable.
 //
-// Usage: node scripts/split-collections.mjs <backup.json>
+// Usage: node scripts/split-collections.mjs [library.json]   (defaults to mutube-library.json)
 
 import { readFile, writeFile } from 'node:fs/promises'
 
-const backupPath = process.argv[2]
-if (!backupPath) {
-  console.error('Usage: node scripts/split-collections.mjs <backup.json>')
-  process.exit(1)
-}
+const backupPath = process.argv[2] ?? 'mutube-library.json'
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
@@ -107,6 +103,7 @@ const STRATEGY = {
   'Numberblocks': { kind: 'season' },
   'Wild Kratts': { kind: 'season' },
   'Wordgirl': { kind: 'season' },
+  'Bitz & Bob': { kind: 'season' },
   'Super Why': { kind: 'topic', buckets: SUPER_WHY },
   'Dr. Binocs': { kind: 'topic', buckets: DR_BINOCS },
   'Alan Becker': { kind: 'topic', buckets: ALAN_BECKER },

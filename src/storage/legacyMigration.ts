@@ -115,8 +115,11 @@ export function mergeLibraries(
     settings.parentPinHash = incoming.settings.parentPinHash
   }
 
+  // --- Blacklist: union of current + incoming, deduped. ---
+  const blacklist = [...new Set([...current.blacklist, ...incoming.blacklist])]
+
   return {
-    data: { version: 1, collections, videos, videoOrder, settings },
+    data: { version: 1, collections, videos, videoOrder, blacklist, settings },
     summary: { videosAdded, videosAlreadyPresent, collectionsAdded, collectionsMerged },
   }
 }

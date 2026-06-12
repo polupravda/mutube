@@ -62,7 +62,7 @@ input:focus, select:focus { outline: none; border-color: var(--blue); }
 
 code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
 
-.loading { color: #fff; display: grid; place-items: center; height: 100%; font-size: 1.4rem; }
+.loading { color: var(--ink); display: grid; place-items: center; height: 100%; font-size: 1.4rem; }
 .muted { color: var(--muted); }
 .error { color: var(--danger); font-weight: 600; }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -73,10 +73,8 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
 /* ============================ KID MODE ============================ */
 .kid {
   min-height: 100%;
-  background:
-    radial-gradient(circle at 85% 12%, rgba(230,210,36,0.30), transparent 42%),
-    radial-gradient(circle at 12% 88%, rgba(105,177,38,0.32), transparent 45%),
-    linear-gradient(160deg, #4D48EB 0%, #6f6bf2 55%, #8e8af5 100%);
+  background: #fff;
+  color: var(--ink);
   display: flex;
   flex-direction: column;
 }
@@ -87,20 +85,14 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
   padding: 16px 20px;
   gap: 12px;
 }
-.logo {
-  color: #fff;
-  margin: 0;
-  font-size: clamp(1.4rem, 4vw, 2.2rem);
-}
 .parent-door {
-  background: rgba(255, 255, 255, 0.12);
+  background: #eef0ff;
+  color: var(--ink);
   width: 44px; height: 44px;
   border-radius: 50%;
   font-size: 1.2rem;
   padding: 0;
 }
-.back-btn { background: rgba(255,255,255,0.18); }
-
 /* Floating action buttons (back / to-top) overlaid on scrollable views. */
 .fab {
   position: fixed; z-index: 50;
@@ -109,14 +101,25 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
   font-size: 1.5rem; line-height: 1;
   box-shadow: 0 4px 16px rgba(0,0,0,0.35);
 }
-.fab-back { top: 14px; left: 14px; background: rgba(0,0,0,0.45); }
-.fab-top { bottom: 20px; right: 20px; background: var(--grad-green); }
+/* Identical back button across pages: white, dark-blue icon. */
+.fab-back { top: 14px; left: 14px; background: #fff; color: var(--ink); }
+.fab-top { bottom: 20px; right: 20px; background: var(--grad-blue); }
+
+/* Header logo: in flow (not sticky), horizontally centered via equal side
+   slots. The floating Back button sits over the left slot on sub-pages. */
+.header-side { flex: 1 1 0; display: flex; align-items: center; min-width: 0; }
+.header-right { justify-content: flex-end; }
+.header-logo { flex: 0 0 auto; background: transparent; box-shadow: none; padding: 0; border: 0; }
+img.header-logo, .header-logo img {
+  height: 56px; width: auto; display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
 
 .home-section { padding-bottom: 6px; }
-.section-title { color: #fff; margin: 14px 0 0 20px; font-size: 1.4rem; font-weight: 800; }
+.section-title { color: var(--ink); margin: 14px 0 0 20px; font-size: 1.4rem; font-weight: 800; }
 
 /* Sub-list tile: a season/topic card (cover thumbnail + name + count). */
-.sublist-tile { padding: 0; overflow: hidden; min-height: 0; gap: 0; justify-content: flex-start; }
+.sublist-tile { padding: 0; overflow: hidden; min-height: 0; gap: 0; justify-content: flex-start; border-radius: 10px; }
 .sublist-tile .tile-cover { width: 100%; border-radius: 0; }
 .sublist-tile .tile-name { padding: 10px 12px 0; }
 .sublist-tile .tile-count { margin: 6px 12px 12px; }
@@ -137,7 +140,7 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
   gap: 8px;
   align-items: center;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
   transition: transform 0.1s ease;
   min-height: 160px;
   justify-content: center;
@@ -154,7 +157,7 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
   background: rgba(105,177,38,0.14); padding: 2px 10px; border-radius: 999px;
 }
 
-.video-tile { padding: 0; overflow: hidden; min-height: 0; }
+.video-tile { padding: 0; overflow: hidden; min-height: 0; border-radius: 10px; }
 .video-tile[draggable='true'] { cursor: grab; }
 .video-tile.drag-over { border-color: var(--yellow); transform: scale(1.03); }
 .thumb-wrap { position: relative; width: 100%; display: block; }
@@ -162,35 +165,36 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
 .video-tile .tile-name { padding: 12px; }
 
 .kid-empty {
-  color: #fff; text-align: center; margin: auto; padding: 40px;
+  color: var(--ink); text-align: center; margin: auto; padding: 40px;
   display: flex; flex-direction: column; gap: 12px; align-items: center;
 }
+/* The player error state sits over the black video stage — keep it light there. */
+.player-stage .kid-empty { color: #fff; }
 .kid-empty .big { font-size: 1.8rem; font-weight: 700; }
-.big-btn { font-size: 1.1rem; padding: 14px 22px; background: var(--grad-green); border-radius: 14px; }
+.big-btn { font-size: 1.1rem; padding: 14px 22px; background: var(--grad-blue); border-radius: 14px; }
 
-/* Player — YouTube-style: video left, playlist column right */
+/* Player — YouTube-style: video left, playlist column right (light theme). */
 .kid-player { height: 100vh; overflow: hidden; }
-.player-header { background: rgba(0,0,0,0.3); }
-.player-title { color: #fff; font-size: 1.1rem; font-weight: 600; text-align: center; flex: 1; }
+.player-header { background: #f3f4ff; }
 .player-main { flex: 1; display: flex; min-height: 0; }
 .player-left { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .player-stage { flex: 1; background: #000; display: flex; position: relative; min-height: 0; }
 
 .player-playlist {
-  width: 340px; flex-shrink: 0; background: rgba(0,0,0,0.28);
+  width: 340px; flex-shrink: 0; background: #f3f4ff;
   display: flex; flex-direction: column; min-height: 0;
 }
-.playlist-title { color: #fff; margin: 0; padding: 14px 16px 8px; font-size: 1.1rem; }
+.playlist-title { color: var(--ink); margin: 0; padding: 14px 16px 8px; font-size: 1.1rem; }
 .playlist-list {
   list-style: none; margin: 0; padding: 0 10px 14px;
   overflow-y: auto; display: flex; flex-direction: column; gap: 8px;
 }
 .playlist-item {
   display: flex; gap: 10px; width: 100%; align-items: center; text-align: left;
-  background: rgba(255,255,255,0.08); color: #fff; border-radius: 12px;
+  background: #fff; color: var(--ink); border-radius: 12px;
   padding: 6px; box-shadow: none;
 }
-.playlist-item.current { background: var(--grad-blue); }
+.playlist-item.current { background: var(--grad-blue); color: #fff; }
 .playlist-item .thumb-wrap { width: 120px; flex-shrink: 0; }
 .playlist-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; display: block; }
 .playlist-name { font-size: 0.9rem; font-weight: 600; line-height: 1.25; }
@@ -203,7 +207,57 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
 }
 .yt { width: 100%; height: 100%; }
 .yt-iframe { width: 100%; height: 100%; border: 0; }
-.player-nav { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; background: rgba(0,0,0,0.3); }
+.player-nav { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; background: #f3f4ff; }
+
+/* =========================== SESSION + BLACKLIST =========================== */
+/* Header controls */
+.session-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.session-timer {
+  font-weight: 800; color: var(--blue); background: #eef0ff;
+  padding: 8px 14px; border-radius: 999px; font-variant-numeric: tabular-nums;
+}
+.session-timer.paused { opacity: 0.6; }
+.session-start-form { display: inline-flex; align-items: center; gap: 6px; }
+.session-start-form input { width: 72px; }
+
+/* Full-screen session popups (warning + over) */
+.session-popup {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px; text-align: center; padding: 24px;
+  background: #ff5ea8; /* pink */
+  color: #fff;
+}
+.session-popup p { margin: 0; font-size: clamp(2.5rem, 9vw, 6rem); font-weight: 900; line-height: 1.05; }
+.session-popup.over { background: #ec3f8f; }
+.session-exit { background: rgba(255,255,255,0.22); }
+
+/* Blacklist "1 video only" lock over a collection section */
+.home-section.locked { position: relative; }
+.blacklist-banner {
+  position: absolute; inset: 0; z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(77, 72, 235, 0.7); /* blue 70% */
+  color: #fff; font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 900;
+  border-radius: 12px; pointer-events: auto; user-select: none;
+}
+
+/* PIN pad */
+.pin-backdrop {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+}
+.pin-pad {
+  background: #fff; color: var(--ink); border-radius: 18px; padding: 22px;
+  width: min(320px, 90vw); box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.pin-title { margin: 0 0 14px; font-size: 1.15rem; text-align: center; }
+.pin-input {
+  width: 100%; text-align: center; font-size: 2rem; letter-spacing: 0.5em;
+  padding: 12px 0; border: 2px solid #d5d6f7; border-radius: 12px;
+}
+.pin-input.error { border-color: var(--danger); }
+.pin-error { color: var(--danger); text-align: center; margin: 8px 0; font-weight: 600; }
 
 /* =========================== PARENT MODE =========================== */
 .parent { max-width: 900px; margin: 0 auto; padding: 16px; color: var(--ink); }

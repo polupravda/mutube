@@ -28,7 +28,15 @@
       "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Octonauts\")",
       "Bash(node scripts/merge-ids-into-backup.mjs \"mutube-backup-2026-06-04 \\(1\\).json\" \"Alan Becker\")",
       "Bash(git check-ignore *)",
-      "Bash(echo \"git check-ignore .env -> $\\(git check-ignore .env || echo 'NOT IGNORED'\\)\")"
+      "Bash(echo \"git check-ignore .env -> $\\(git check-ignore .env || echo 'NOT IGNORED'\\)\")",
+      "Bash(rtk find *)",
+      "Bash(node --check scripts/merge-ids-into-backup.mjs)",
+      "Bash(git mv *)",
+      "Bash(echo \"exit: $?  \\(no matches above = clean\\)\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"JJ and Mikey\")",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"Bitz & Bob\")",
+      "Bash(node scripts/split-collections.mjs)",
+      "Bash(npm run *)"
     ]
   }
 }
