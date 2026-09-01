@@ -389,7 +389,10 @@
         {
           "id": "afc12a10-f699-4f4e-94e4-10e381525bb0:lessons-friendship",
           "name": "Lessons & Friendship",
-          "videoIds": ["ElcSBYsyG9Q", "kqm2ufycxIQ"]
+          "videoIds": [
+            "ElcSBYsyG9Q",
+            "kqm2ufycxIQ"
+          ]
         },
         {
           "id": "afc12a10-f699-4f4e-94e4-10e381525bb0:other",
@@ -2859,12 +2862,19 @@
         {
           "id": "c3eb289c-0568-488d-ae6b-578c1f90757b:u-z",
           "name": "U–Z",
-          "videoIds": ["ka3hj0nphqM", "GXvvgA57aBc", "rm2ceyyOsCY"]
+          "videoIds": [
+            "ka3hj0nphqM",
+            "GXvvgA57aBc",
+            "rm2ceyyOsCY"
+          ]
         },
         {
           "id": "c3eb289c-0568-488d-ae6b-578c1f90757b:other",
           "name": "Other",
-          "videoIds": ["_iWGpM8C8_E", "-NR0syphqAo"]
+          "videoIds": [
+            "_iWGpM8C8_E",
+            "-NR0syphqAo"
+          ]
         }
       ]
     },
@@ -3112,7 +3122,9 @@
         {
           "id": "be415eb3-f8ce-47a3-a49b-2c778e59deda:specials",
           "name": "Specials",
-          "videoIds": ["K5QGfvVAj2Q"]
+          "videoIds": [
+            "K5QGfvVAj2Q"
+          ]
         }
       ]
     },
@@ -3391,12 +3403,19 @@
         {
           "id": "f313d8c5-f983-44b2-b80e-9bdbd9563eb7:specials-songs",
           "name": "Specials & Songs",
-          "videoIds": ["uohBIITgOY0", "mR_Ui_3Iz2o", "8olZAPzUSIU"]
+          "videoIds": [
+            "uohBIITgOY0",
+            "mR_Ui_3Iz2o",
+            "8olZAPzUSIU"
+          ]
         },
         {
           "id": "f313d8c5-f983-44b2-b80e-9bdbd9563eb7:above-beyond",
           "name": "Above & Beyond",
-          "videoIds": ["rx4ljqHEVQk", "pEZijnjFgyw"]
+          "videoIds": [
+            "rx4ljqHEVQk",
+            "pEZijnjFgyw"
+          ]
         },
         {
           "id": "f313d8c5-f983-44b2-b80e-9bdbd9563eb7:creature-reports",
@@ -3581,7 +3600,9 @@
         {
           "id": "be8df87e-ce4d-4f9e-8c63-cd11e5b1588a:other",
           "name": "Other",
-          "videoIds": ["-MV7Hg31usU"]
+          "videoIds": [
+            "-MV7Hg31usU"
+          ]
         }
       ]
     },
@@ -4400,7 +4421,17 @@
     {
       "id": "d713df7f-6549-4cac-b803-05e88f9cbe2c",
       "name": "Science",
-      "videoIds": ["94gaOiEk-fE", "8Are9dDbW24"]
+      "videoIds": [
+        "94gaOiEk-fE",
+        "8Are9dDbW24",
+        "0xgr77hhApA",
+        "Q5C7sqVe2Vg",
+        "gcQNBKYhuUo",
+        "yDAAlojz8NU",
+        "_R3kmPTp-Tg",
+        "IFhKB5zHWFg",
+        "Fnl7tT-4cKs"
+      ]
     },
     {
       "id": "f37270ba-74ce-4b46-bea1-a5fc23817dfd",
@@ -26126,6 +26157,76 @@
       "embeddable": true,
       "addedAt": "2026-06-13T08:55:49.859Z",
       "alias": "Minecraft for Kids - Potions and Underwater Stuff! S2 E33"
+    },
+    "0xgr77hhApA": {
+      "id": "0xgr77hhApA",
+      "title": "🌎 SIMULATED Journey from EARTH to the END of the UNIVERSE ✨",
+      "channelTitle": "MetaBallStudios",
+      "thumbnailUrl": "https://i.ytimg.com/vi/0xgr77hhApA/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:39:12.913692Z",
+      "alias": "🌎 SIMULATED Journey from EARTH to the END of the UNIVERSE ✨"
+    },
+    "Q5C7sqVe2Vg": {
+      "id": "Q5C7sqVe2Vg",
+      "title": "Ocean DEPTH Comparison 🌊 (3D Animation)",
+      "channelTitle": "MetaBallStudios",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Q5C7sqVe2Vg/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:56:28.071058Z",
+      "alias": "Ocean DEPTH Comparison 🌊 (3D Animation)"
+    },
+    "gcQNBKYhuUo": {
+      "id": "gcQNBKYhuUo",
+      "title": "What If a Black Hole Entered Our Solar System? (Simulation)",
+      "channelTitle": "Stargaze",
+      "thumbnailUrl": "https://i.ytimg.com/vi/gcQNBKYhuUo/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:56:28.071058Z",
+      "alias": "What If a Black Hole Entered Our Solar System? (Simulation)"
+    },
+    "yDAAlojz8NU": {
+      "id": "yDAAlojz8NU",
+      "title": "This Is the Scariest Place in The Universe",
+      "channelTitle": "Kurzgesagt – In a Nutshell",
+      "thumbnailUrl": "https://i.ytimg.com/vi/yDAAlojz8NU/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:56:28.071058Z",
+      "alias": "This Is the Scariest Place in The Universe"
+    },
+    "_R3kmPTp-Tg": {
+      "id": "_R3kmPTp-Tg",
+      "title": "NEW YORK | TIMELAPSE | 0 to 2026",
+      "channelTitle": "timewarp cities",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_R3kmPTp-Tg/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:56:28.071058Z",
+      "alias": "NEW YORK | TIMELAPSE | 0 to 2026"
+    },
+    "IFhKB5zHWFg": {
+      "id": "IFhKB5zHWFg",
+      "title": "PARIS - 3D TIMELAPSE - 300 BCE to 2025 (No AI)",
+      "channelTitle": "CITY 3D TIMELAPSE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/IFhKB5zHWFg/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:56:28.071058Z",
+      "alias": "PARIS - 3D TIMELAPSE - 300 BCE to 2025 (No AI)"
+    },
+    "Fnl7tT-4cKs": {
+      "id": "Fnl7tT-4cKs",
+      "title": "Evolution of ROME ( 753 BC – AD 2025 ) TimelapseCity",
+      "channelTitle": "Timelapse City",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Fnl7tT-4cKs/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T21:56:28.071058Z",
+      "alias": "Evolution of ROME ( 753 BC – AD 2025 ) TimelapseCity"
     }
   },
   "videoOrder": [
@@ -28268,8 +28369,17 @@
     "EctgAn4PmSQ",
     "K67wyvCC21s",
     "NYqDrdqE_aI",
-    "-TBn3jiF604"
+    "-TBn3jiF604",
+    "0xgr77hhApA",
+    "Q5C7sqVe2Vg",
+    "gcQNBKYhuUo",
+    "yDAAlojz8NU",
+    "_R3kmPTp-Tg",
+    "IFhKB5zHWFg",
+    "Fnl7tT-4cKs"
   ],
-  "blacklist": ["f37270ba-74ce-4b46-bea1-a5fc23817dfd"],
+  "blacklist": [
+    "f37270ba-74ce-4b46-bea1-a5fc23817dfd"
+  ],
   "settings": {}
 }
