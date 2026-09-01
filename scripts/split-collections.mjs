@@ -110,6 +110,8 @@ const STRATEGY = {
   'Octonauts': { kind: 'topic', buckets: OCTONAUTS },
   'Peg + Cat': { kind: 'topic', buckets: PEG_CAT, otherName: 'Stories & Adventures' },
   'Xavier Riddle': { kind: 'alpha', extract: xavierName, ranges: ALPHA_RANGES },
+  // No season/topic structure — split the playlist into N equal ordered parts.
+  'Bluey': { kind: 'chunks', count: 3 },
 }
 
 // Order the sub-list names: seasons numerically; topic/alpha by their defined
@@ -139,6 +141,19 @@ const title = (id) => data.videos[id]?.title ?? id
 for (const col of data.collections) {
   const strat = STRATEGY[col.name]
   if (!strat) continue
+
+  // Position-based split into N equal ordered parts.
+  if (strat.kind === 'chunks') {
+    const ids = col.videoIds
+    const per = Math.ceil(ids.length / strat.count)
+    col.subCollections = Array.from({ length: strat.count }, (_, i) => ({
+      id: `${col.id}:part-${i + 1}`,
+      name: `Part ${i + 1}`,
+      videoIds: ids.slice(i * per, (i + 1) * per),
+    })).filter((s) => s.videoIds.length > 0)
+    console.log(`${col.name}: ${col.subCollections.length} parts -> ${col.subCollections.map((s) => `${s.name} (${s.videoIds.length})`).join(', ')}`)
+    continue
+  }
 
   const groups = new Map() // name -> videoIds[]
   for (const id of col.videoIds) {

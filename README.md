@@ -123,6 +123,26 @@ those collections.
 node scripts/extract-watch-ids.mjs            # run-regex.html -> regex-output.md
 ```
 
+## 6. Deploy to GitHub Pages
+
+The repo ships a workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+that builds the app and publishes `dist/` to Pages on every push to `main`.
+
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions** (done).
+2. Push to `main` (or run the workflow from the **Actions** tab). It builds and
+   deploys; the live URL is `https://<user>.github.io/<repo>/`.
+3. *(Optional)* to enable the parent "Add video" lookup on the live site, add a
+   repo secret **`VITE_YOUTUBE_API_KEY`** (Settings → Secrets and variables →
+   Actions) and restrict that key to your Pages URL (see §1). Kids watching
+   don't need it.
+
+**Where the data comes from:** a static host has no backend, so the committed
+[`mutube-library.json`](mutube-library.json) is bundled into the build and loaded
+on startup. To **update the published library**, edit it (usually via the scripts
+in §5), commit, and push — the workflow rebuilds and republishes. The live site
+is read-only for the library (Import/Export and the timer/limits still work
+per-browser via local storage).
+
 ---
 
 ## Locking it down for real

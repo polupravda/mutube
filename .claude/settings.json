@@ -36,7 +36,9 @@
       "Bash(node scripts/merge-ids-into-backup.mjs \"JJ and Mikey\")",
       "Bash(node scripts/merge-ids-into-backup.mjs \"Bitz & Bob\")",
       "Bash(node scripts/split-collections.mjs)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(grep -oE 'aria-label=\"[^\"]{10,90}\"' run-regex.html)",
+      "Bash(node scripts/merge-ids-into-backup.mjs \"Bluey\")"
     ]
   }
 }

@@ -1,6 +1,6 @@
 import { defineConfig, type Connect, type PluginOption } from 'vite'
 import react from '@vitejs/plugin-react'
-import { readFile, writeFile } from 'node:fs/promises'
+import { copyFile, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 /**
@@ -65,8 +65,31 @@ function localDataFile(fileName = 'mutube.data.json'): PluginOption {
   }
 }
 
+/**
+ * Ship the committed library into the build output so a static host (GitHub
+ * Pages) has data: FileStorageAdapter loads `<base>/mutube-library.json` when
+ * the dev endpoint isn't available. Update the library by committing a new
+ * mutube-library.json — the deploy workflow rebuilds and republishes it.
+ */
+function copyLibrary(fileName = 'mutube-library.json'): PluginOption {
+  return {
+    name: 'mutube-copy-library',
+    apply: 'build',
+    async closeBundle() {
+      try {
+        await copyFile(
+          path.resolve(process.cwd(), fileName),
+          path.resolve(process.cwd(), 'dist', fileName),
+        )
+      } catch {
+        // Library not present — skip (app falls back to an empty library).
+      }
+    },
+  }
+}
+
 // Use a relative base so the built app also works on GitHub Pages / static hosts.
 export default defineConfig({
   base: './',
-  plugins: [react(), localDataFile()],
+  plugins: [react(), localDataFile(), copyLibrary()],
 })

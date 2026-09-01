@@ -11,7 +11,7 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
  */
 
 const KEY = 'mutube.session.v1'
-const DEFAULT_MIN = 120
+const DEFAULT_MIN = 90
 const WARNING_MS = 5 * 60 * 1000
 const POPUP_MS = 3000
 
