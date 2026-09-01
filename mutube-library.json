@@ -4430,7 +4430,9 @@
         "yDAAlojz8NU",
         "_R3kmPTp-Tg",
         "IFhKB5zHWFg",
-        "Fnl7tT-4cKs"
+        "Fnl7tT-4cKs",
+        "VPDf_AhsMFg",
+        "fhxsoSO5Xqk"
       ]
     },
     {
@@ -26227,6 +26229,26 @@
       "embeddable": true,
       "addedAt": "2026-09-01T21:56:28.071058Z",
       "alias": "Evolution of ROME ( 753 BC – AD 2025 ) TimelapseCity"
+    },
+    "VPDf_AhsMFg": {
+      "id": "VPDf_AhsMFg",
+      "title": "Tallest Skyscrapers in the World (3D Size Comparison)",
+      "channelTitle": "MegaBuilds",
+      "thumbnailUrl": "https://i.ytimg.com/vi/VPDf_AhsMFg/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T22:03:49.296201Z",
+      "alias": "Tallest Skyscrapers in the World (3D Size Comparison)"
+    },
+    "fhxsoSO5Xqk": {
+      "id": "fhxsoSO5Xqk",
+      "title": "INSECTS at 1000× Scale 🐜😱 Surreal Size Comparison",
+      "channelTitle": "RED SIDE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fhxsoSO5Xqk/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-01T22:03:49.296201Z",
+      "alias": "INSECTS at 1000× Scale 🐜😱 Surreal Size Comparison"
     }
   },
   "videoOrder": [
@@ -28376,7 +28398,9 @@
     "yDAAlojz8NU",
     "_R3kmPTp-Tg",
     "IFhKB5zHWFg",
-    "Fnl7tT-4cKs"
+    "Fnl7tT-4cKs",
+    "VPDf_AhsMFg",
+    "fhxsoSO5Xqk"
   ],
   "blacklist": [
     "f37270ba-74ce-4b46-bea1-a5fc23817dfd"
