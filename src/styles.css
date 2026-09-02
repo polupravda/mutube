@@ -217,6 +217,21 @@ img.header-logo, .header-logo img {
   padding: 8px 14px; border-radius: 999px; font-variant-numeric: tabular-nums;
 }
 .session-timer.paused { opacity: 0.6; }
+
+/* Mobile header: shrink the logo/gear, compact the session buttons, and drop
+   button labels to icons so everything fits without horizontal overflow. */
+@media (max-width: 640px) {
+  .kid-header { padding: 8px 10px; gap: 6px; flex-wrap: wrap; }
+  img.header-logo, .header-logo img { height: 40px; }
+  .parent-door { width: 38px; height: 38px; font-size: 1.05rem; }
+  .session-controls { gap: 6px; }
+  .session-controls .ghost,
+  .session-controls > button { padding: 8px 11px; font-size: 0.9rem; border-radius: 10px; }
+  .session-timer { padding: 6px 10px; font-size: 0.85rem; }
+  .session-start-form input { width: 60px; }
+  .btn-label { display: none; }
+  .section-title { font-size: 1.2rem; margin-top: 10px; }
+}
 .session-start-form { display: inline-flex; align-items: center; gap: 6px; }
 .session-start-form input { width: 72px; }
 

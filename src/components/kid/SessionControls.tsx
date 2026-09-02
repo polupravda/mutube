@@ -29,7 +29,9 @@ export function SessionControls() {
           >
             ⏱ {fmt(remainingMs ?? 0)}{paused ? ' ❚❚' : ''}
           </span>
-          <button className="ghost" onClick={stop} title="Stop the session timer">⏹ Stop</button>
+          <button className="ghost" onClick={stop} title="Stop the session timer">
+            ⏹ <span className="btn-label">Stop</span>
+          </button>
         </>
       ) : openStart ? (
         <span className="session-start-form">
@@ -43,8 +45,8 @@ export function SessionControls() {
           <button onClick={() => { start(minutes); setOpenStart(false) }}>Start</button>
         </span>
       ) : (
-        <button className="ghost" onClick={() => { setMinutes(defaultDurationMin); setOpenStart(true) }}>
-          ▶ Start session
+        <button className="ghost" onClick={() => { setMinutes(defaultDurationMin); setOpenStart(true) }} title="Start a session">
+          ▶ <span className="btn-label">Start session</span>
         </button>
       )}
 
@@ -53,7 +55,7 @@ export function SessionControls() {
         onClick={() => setPin(true)}
         title={blacklistUsed ? 'Reset the one-video limit (PIN)' : 'No limit to reset yet'}
       >
-        Reset limit{blacklistUsed ? ' •' : ''}
+        🔓{blacklistUsed ? ' •' : ''} <span className="btn-label">Reset limit</span>
       </button>
 
       {pin && (
