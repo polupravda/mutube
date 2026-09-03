@@ -39,12 +39,7 @@ export function PlayerView({
   const { dispatch } = useAppData()
   const { sessionPause, setWatching } = useSession()
   const [errored, setErrored] = useState(false)
-  const [isFullscreen, setIsFullscreen] = useState(false)
   const playerRef = useRef<YouTubePlayer | null>(null)
-  // We fullscreen our OWN element (video + footer + link cover) rather than the
-  // cross-origin iframe, so the "block YouTube link" cover stays on top in
-  // fullscreen. Native fullscreen (fs: 0) is disabled for the same reason.
-  const stageWrapRef = useRef<HTMLDivElement>(null)
 
   const video = playlist[index]
   const hasPrev = index > 0
@@ -52,17 +47,6 @@ export function PlayerView({
 
   // Clear a prior error when the selection changes.
   useEffect(() => setErrored(false), [video.id])
-
-  useEffect(() => {
-    const onChange = () => setIsFullscreen(document.fullscreenElement === stageWrapRef.current)
-    document.addEventListener('fullscreenchange', onChange)
-    return () => document.removeEventListener('fullscreenchange', onChange)
-  }, [])
-
-  const toggleFullscreen = () => {
-    if (document.fullscreenElement) void document.exitFullscreen()
-    else void stageWrapRef.current?.requestFullscreen?.()
-  }
 
   // The session timer counts only while a video is actually playing — so freeze
   // it whenever the player view goes away (back to browsing).
@@ -84,7 +68,6 @@ export function PlayerView({
       rel: 0, // limit "related" to the same channel
       modestbranding: 1,
       playsinline: 1,
-      fs: 0, // native fullscreen off — we provide our own so the link cover survives fullscreen
       iv_load_policy: 3, // hide annotations
     },
   }
@@ -116,7 +99,7 @@ export function PlayerView({
       </header>
 
       <div className="player-main">
-        <div className="player-left" ref={stageWrapRef}>
+        <div className="player-left">
           <div className="player-stage">
             {errored ? (
               <div className="kid-empty">
@@ -124,35 +107,26 @@ export function PlayerView({
                 <p>Pick another one from the list!</p>
               </div>
             ) : (
-              <>
-                <YouTube
-                  key={video.id}
-                  videoId={video.id}
-                  opts={opts}
-                  className="yt"
-                  iframeClassName="yt-iframe"
-                  onReady={onReady}
-                  onStateChange={onStateChange}
-                  onError={onError}
-                  onEnd={() => {
-                    // Blacklisted: this used the session's one allowed video.
-                    if (blacklisted) onBlacklistFinished()
-                    else if (hasNext) onSelect(index + 1)
-                  }}
-                />
-                {/* Transparent shield over the bottom-right "YouTube" link so
-                    kids can't click through to youtube.com. Scales with the
-                    player, so it lines up in both the small view and fullscreen. */}
-                <div className="yt-link-cover" aria-hidden="true" />
-              </>
+              <YouTube
+                key={video.id}
+                videoId={video.id}
+                opts={opts}
+                className="yt"
+                iframeClassName="yt-iframe"
+                onReady={onReady}
+                onStateChange={onStateChange}
+                onError={onError}
+                onEnd={() => {
+                  // Blacklisted: this used the session's one allowed video.
+                  if (blacklisted) onBlacklistFinished()
+                  else if (hasNext) onSelect(index + 1)
+                }}
+              />
             )}
           </div>
 
           <footer className="player-nav">
             <button className="big-btn" disabled={!hasPrev} onClick={() => onSelect(index - 1)}>◀ Previous</button>
-            <button className="big-btn" onClick={toggleFullscreen}>
-              {isFullscreen ? '✕ Exit' : '⛶ Fullscreen'}
-            </button>
             <button className="big-btn" disabled={!hasNext} onClick={() => onSelect(index + 1)}>Next ▶</button>
           </footer>
         </div>

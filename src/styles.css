@@ -179,20 +179,6 @@ img.header-logo, .header-logo img {
 .player-main { flex: 1; display: flex; min-height: 0; }
 .player-left { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .player-stage { flex: 1; background: #000; display: flex; position: relative; min-height: 0; }
-/* Transparent shield over the bottom-right YouTube watermark link (blocks the
-   click-through to youtube.com). Kept small and pinned to the very corner so it
-   overlaps the watermark but leaves most of the "Skip Ad" button clickable
-   (the Skip button is larger and extends further up/left). */
-.yt-link-cover {
-  position: absolute; right: 0; bottom: 0; z-index: 2;
-  width: max(60px, 9%); height: max(20px, 6%);
-  background: transparent; cursor: default; pointer-events: auto;
-}
-
-/* Our own fullscreen target (video + footer) so the cover stays on top. */
-.player-left:fullscreen { background: #000; }
-.player-left:-webkit-full-screen { background: #000; }
-.player-left:fullscreen .player-nav { background: rgba(0, 0, 0, 0.55); }
 
 .player-playlist {
   width: 340px; flex-shrink: 0; background: #f3f4ff;
