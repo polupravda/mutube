@@ -4757,6 +4757,54 @@
         "NYqDrdqE_aI",
         "-TBn3jiF604"
       ]
+    },
+    {
+      "id": "63b51663-88ef-432f-91c9-ef8bf933408d",
+      "name": "Mini Math",
+      "videoIds": [
+        "xnUkIsdvfGY",
+        "G05AgnEGmgw",
+        "7J1OkxuyLD0",
+        "362JVVvgYPE",
+        "2wUsdsae0ro",
+        "Js45cR_7wFE",
+        "Ux_kLd7qAcY",
+        "HnlJzWhsNnw",
+        "zF_dBk8EPDk",
+        "7XuNVVlD98g",
+        "yIx1DplJMB4"
+      ]
+    },
+    {
+      "id": "954d644e-e00a-47a5-bdb9-42475ffdb282",
+      "name": "Redstone Tutorials",
+      "videoIds": [
+        "qrbnQVKP9oc",
+        "rycGxdYuaR4",
+        "Kh--IrjVfac",
+        "txS8UC8SukM",
+        "r7Dc_dVFOM0",
+        "f3vFphF0WHk",
+        "hPnrncg6N0A",
+        "B6pkglUPwK8",
+        "xGjMG3Off-0",
+        "Ksz2TTB9EVM",
+        "ERwZwrlEun4",
+        "28Iaf5WEakQ",
+        "FXs8cxY1CEU",
+        "QhYg6yUCI1M",
+        "HwHUZaKKaVE",
+        "qWc_l7VNaJY",
+        "exrSkx77uBk",
+        "EnelNaj34e8",
+        "_aQ9E_7kvFg",
+        "X3tkSdBq7Nw",
+        "Er3ix5X6QEI",
+        "QSV3JiDsd8E",
+        "mJO3Kijy77Q",
+        "slwFEuYLDOc",
+        "nXj2nyXwkKs"
+      ]
     }
   ],
   "videos": {
@@ -26249,6 +26297,366 @@
       "embeddable": true,
       "addedAt": "2026-09-01T22:03:49.296201Z",
       "alias": "INSECTS at 1000× Scale 🐜😱 Surreal Size Comparison"
+    },
+    "xnUkIsdvfGY": {
+      "id": "xnUkIsdvfGY",
+      "title": "Estimating! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/xnUkIsdvfGY/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Estimating! | Mini Math Movies | Scratch Garden"
+    },
+    "G05AgnEGmgw": {
+      "id": "G05AgnEGmgw",
+      "title": "Composing Numbers & Decomposing Numbers! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/G05AgnEGmgw/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Composing Numbers & Decomposing Numbers! | Mini Math Movies | Scratch Garden"
+    },
+    "7J1OkxuyLD0": {
+      "id": "7J1OkxuyLD0",
+      "title": "Adding & Subtracting! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7J1OkxuyLD0/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Adding & Subtracting! | Mini Math Movies | Scratch Garden"
+    },
+    "362JVVvgYPE": {
+      "id": "362JVVvgYPE",
+      "title": "Fractions! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/362JVVvgYPE/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Fractions! | Mini Math Movies | Scratch Garden"
+    },
+    "2wUsdsae0ro": {
+      "id": "2wUsdsae0ro",
+      "title": "Measuring! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/2wUsdsae0ro/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Measuring! | Mini Math Movies | Scratch Garden"
+    },
+    "Js45cR_7wFE": {
+      "id": "Js45cR_7wFE",
+      "title": "Patterns! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Js45cR_7wFE/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Patterns! | Mini Math Movies | Scratch Garden"
+    },
+    "Ux_kLd7qAcY": {
+      "id": "Ux_kLd7qAcY",
+      "title": "Shapes! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Ux_kLd7qAcY/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Shapes! | Mini Math Movies | Scratch Garden"
+    },
+    "HnlJzWhsNnw": {
+      "id": "HnlJzWhsNnw",
+      "title": "Location & Directions! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HnlJzWhsNnw/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Location & Directions! | Mini Math Movies | Scratch Garden"
+    },
+    "zF_dBk8EPDk": {
+      "id": "zF_dBk8EPDk",
+      "title": "Data! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/zF_dBk8EPDk/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Data! | Mini Math Movies | Scratch Garden"
+    },
+    "7XuNVVlD98g": {
+      "id": "7XuNVVlD98g",
+      "title": "Probability! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7XuNVVlD98g/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Probability! | Mini Math Movies | Scratch Garden"
+    },
+    "yIx1DplJMB4": {
+      "id": "yIx1DplJMB4",
+      "title": "Social Emotional Learning in Math! | Mini Math Movies | Scratch Garden",
+      "channelTitle": "Scratch Garden",
+      "thumbnailUrl": "https://i.ytimg.com/vi/yIx1DplJMB4/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T12:54:01.351786Z",
+      "alias": "Social Emotional Learning in Math! | Mini Math Movies | Scratch Garden"
+    },
+    "qrbnQVKP9oc": {
+      "id": "qrbnQVKP9oc",
+      "title": "Redstone Tutorials - #1 Beginner Basics",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/qrbnQVKP9oc/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #1 Beginner Basics"
+    },
+    "rycGxdYuaR4": {
+      "id": "rycGxdYuaR4",
+      "title": "Redstone Tutorials - #2 Repeaters and Inverters",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/rycGxdYuaR4/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #2 Repeaters and Inverters"
+    },
+    "Kh--IrjVfac": {
+      "id": "Kh--IrjVfac",
+      "title": "Redstone Tutorials - #3 Opening Double Doors",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Kh--IrjVfac/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #3 Opening Double Doors"
+    },
+    "txS8UC8SukM": {
+      "id": "txS8UC8SukM",
+      "title": "Redstone Tutorials - #4 Piston Doors",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/txS8UC8SukM/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #4 Piston Doors"
+    },
+    "r7Dc_dVFOM0": {
+      "id": "r7Dc_dVFOM0",
+      "title": "Redstone Tutorials - #5 Neater Piston Doors",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/r7Dc_dVFOM0/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #5 Neater Piston Doors"
+    },
+    "f3vFphF0WHk": {
+      "id": "f3vFphF0WHk",
+      "title": "Redstone Tutorials - #6 Rails",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/f3vFphF0WHk/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #6 Rails"
+    },
+    "hPnrncg6N0A": {
+      "id": "hPnrncg6N0A",
+      "title": "Redstone Tutorials - #7 Repeaters & Delays",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/hPnrncg6N0A/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #7 Repeaters & Delays"
+    },
+    "B6pkglUPwK8": {
+      "id": "B6pkglUPwK8",
+      "title": "Redstone Tutorials - #8 Logic Gates",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/B6pkglUPwK8/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #8 Logic Gates"
+    },
+    "xGjMG3Off-0": {
+      "id": "xGjMG3Off-0",
+      "title": "Redstone Tutorials - #8.5 OR and NAND Gates",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/xGjMG3Off-0/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #8.5 OR and NAND Gates"
+    },
+    "Ksz2TTB9EVM": {
+      "id": "Ksz2TTB9EVM",
+      "title": "Redstone Tutorials - #9 T Flip-Flop",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Ksz2TTB9EVM/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #9 T Flip-Flop"
+    },
+    "ERwZwrlEun4": {
+      "id": "ERwZwrlEun4",
+      "title": "Redstone Tutorials - #10 RS NOR Latch",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ERwZwrlEun4/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #10 RS NOR Latch"
+    },
+    "28Iaf5WEakQ": {
+      "id": "28Iaf5WEakQ",
+      "title": "Redstone Tutorials - #11 Storage Cart Station",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/28Iaf5WEakQ/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #11 Storage Cart Station"
+    },
+    "FXs8cxY1CEU": {
+      "id": "FXs8cxY1CEU",
+      "title": "Redstone Tutorials - #11.5 Station Rotation Fix",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/FXs8cxY1CEU/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #11.5 Station Rotation Fix"
+    },
+    "QhYg6yUCI1M": {
+      "id": "QhYg6yUCI1M",
+      "title": "Redstone Tutorials - #12 Self Resetting Buttons",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QhYg6yUCI1M/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #12 Self Resetting Buttons"
+    },
+    "HwHUZaKKaVE": {
+      "id": "HwHUZaKKaVE",
+      "title": "Redstone Tutorials - #13 Hidden Piston Trap",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HwHUZaKKaVE/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #13 Hidden Piston Trap"
+    },
+    "qWc_l7VNaJY": {
+      "id": "qWc_l7VNaJY",
+      "title": "Redstone Tutorials - #14 Toggle Nether Portal",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/qWc_l7VNaJY/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #14 Toggle Nether Portal"
+    },
+    "exrSkx77uBk": {
+      "id": "exrSkx77uBk",
+      "title": "Redstone Tutorials - #15 Minecart Station",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/exrSkx77uBk/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #15 Minecart Station"
+    },
+    "EnelNaj34e8": {
+      "id": "EnelNaj34e8",
+      "title": "Redstone Tutorials - #16 Clocks",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/EnelNaj34e8/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #16 Clocks"
+    },
+    "_aQ9E_7kvFg": {
+      "id": "_aQ9E_7kvFg",
+      "title": "Redstone Tutorials - #17 XOR Gate",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_aQ9E_7kvFg/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #17 XOR Gate"
+    },
+    "X3tkSdBq7Nw": {
+      "id": "X3tkSdBq7Nw",
+      "title": "Redstone Tutorials - #18 Arrow Trap",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/X3tkSdBq7Nw/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #18 Arrow Trap"
+    },
+    "Er3ix5X6QEI": {
+      "id": "Er3ix5X6QEI",
+      "title": "Redstone Tutorials - #19 Combination Lock",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Er3ix5X6QEI/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #19 Combination Lock"
+    },
+    "QSV3JiDsd8E": {
+      "id": "QSV3JiDsd8E",
+      "title": "Redstone Tutorials - #20 Simple TNT Cannon - 1.4.5",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QSV3JiDsd8E/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #20 Simple TNT Cannon - 1.4.5"
+    },
+    "mJO3Kijy77Q": {
+      "id": "mJO3Kijy77Q",
+      "title": "Redstone Tutorials - #21 Piston Door Lock",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/mJO3Kijy77Q/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #21 Piston Door Lock"
+    },
+    "slwFEuYLDOc": {
+      "id": "slwFEuYLDOc",
+      "title": "Redstone Tutorials - #22 Automatic Lighting System",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/slwFEuYLDOc/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #22 Automatic Lighting System"
+    },
+    "nXj2nyXwkKs": {
+      "id": "nXj2nyXwkKs",
+      "title": "Redstone Tutorials - #23 Hidden Staircase Entrance",
+      "channelTitle": "Flabaliki",
+      "thumbnailUrl": "https://i.ytimg.com/vi/nXj2nyXwkKs/mqdefault.jpg",
+      "durationSeconds": 0,
+      "embeddable": true,
+      "addedAt": "2026-09-04T13:05:25.774039Z",
+      "alias": "Redstone Tutorials - #23 Hidden Staircase Entrance"
     }
   },
   "videoOrder": [
@@ -28400,7 +28808,43 @@
     "IFhKB5zHWFg",
     "Fnl7tT-4cKs",
     "VPDf_AhsMFg",
-    "fhxsoSO5Xqk"
+    "fhxsoSO5Xqk",
+    "xnUkIsdvfGY",
+    "G05AgnEGmgw",
+    "7J1OkxuyLD0",
+    "362JVVvgYPE",
+    "2wUsdsae0ro",
+    "Js45cR_7wFE",
+    "Ux_kLd7qAcY",
+    "HnlJzWhsNnw",
+    "zF_dBk8EPDk",
+    "7XuNVVlD98g",
+    "yIx1DplJMB4",
+    "qrbnQVKP9oc",
+    "rycGxdYuaR4",
+    "Kh--IrjVfac",
+    "txS8UC8SukM",
+    "r7Dc_dVFOM0",
+    "f3vFphF0WHk",
+    "hPnrncg6N0A",
+    "B6pkglUPwK8",
+    "xGjMG3Off-0",
+    "Ksz2TTB9EVM",
+    "ERwZwrlEun4",
+    "28Iaf5WEakQ",
+    "FXs8cxY1CEU",
+    "QhYg6yUCI1M",
+    "HwHUZaKKaVE",
+    "qWc_l7VNaJY",
+    "exrSkx77uBk",
+    "EnelNaj34e8",
+    "_aQ9E_7kvFg",
+    "X3tkSdBq7Nw",
+    "Er3ix5X6QEI",
+    "QSV3JiDsd8E",
+    "mJO3Kijy77Q",
+    "slwFEuYLDOc",
+    "nXj2nyXwkKs"
   ],
   "blacklist": [
     "f37270ba-74ce-4b46-bea1-a5fc23817dfd"
