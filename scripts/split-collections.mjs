@@ -58,6 +58,17 @@ const OCTONAUTS = [
 
 const PEG_CAT = [['Math Problems', ['problem']]] // everything else -> otherName
 
+// MrCrayfish redstone builds — ordered so distinctive themes win first.
+const MRCRAYFISH = [
+  ['Armour Builds', ['armour', 'armor']],
+  ['Doors & Entrances', ['door', 'entrance', 'staircase', ' stairs', 'gate', 'drawbridge']],
+  ['Locks & Security', ['lock', 'password', 'combination', 'keypad', 'vault', 'alarm', 'intruder', 'lie detector', 'indicator']],
+  ['Farms & Machines', ['farm', 'cooker', 'furnace', 'smelter', 'grill', 'blender', 'cooler', 'toaster', 'brewing', 'campfire', 'generator', 'melon', 'pumpkin', 'chicken', 'mutton', 'wool', 'pickle', ' pig']],
+  ['Storage & Sorting', ['storage', 'sorter', 'sort', 'chest', 'shulker', 'hopper', 'transportation', 'minecart', 'trading']],
+  ['Minigames & Gambling', ['minigame', 'mini-game', 'gambling', 'roulette', '8 ball', 'lucky block', 'casino', 'pie face', 'russian', 'magic 8']],
+  ['Traps & Pranks', ['trap', 'prank', 'troll']],
+]
+
 function bucketName(title, buckets) {
   const t = ` ${title.toLowerCase()} `
   for (const [name, kws] of buckets) {
@@ -112,6 +123,7 @@ const STRATEGY = {
   'Xavier Riddle': { kind: 'alpha', extract: xavierName, ranges: ALPHA_RANGES },
   // No season/topic structure — split the playlist into N equal ordered parts.
   'Bluey': { kind: 'chunks', count: 3 },
+  'MrCrayfish Redstone': { kind: 'topic', buckets: MRCRAYFISH, otherName: 'Gadgets & Fun' },
 }
 
 // Order the sub-list names: seasons numerically; topic/alpha by their defined
