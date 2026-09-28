@@ -1,3 +1,4 @@
+import { useLayoutEffect, type MutableRefObject } from 'react'
 import { type Collection, type SubCollection, type Video } from '../../types'
 import { FloatingControls } from './FloatingControls'
 import { HeaderLogo } from './HeaderLogo'
@@ -14,6 +15,7 @@ export function HomeView({
   videoById,
   blacklist,
   blacklistLocked,
+  scrollRef,
   onPickSub,
   onExitToParent,
 }: {
@@ -21,9 +23,18 @@ export function HomeView({
   videoById: (id: string) => Video | undefined
   blacklist: string[]
   blacklistLocked: boolean
+  scrollRef: MutableRefObject<number>
   onPickSub: (collectionId: string, subId: string | null) => void
   onExitToParent: () => void
 }) {
+  // Restore the previous home scroll position on mount; save it on unmount (when
+  // navigating into a sub-list / player) so returning here keeps the position.
+  useLayoutEffect(() => {
+    window.scrollTo(0, scrollRef.current)
+    return () => {
+      scrollRef.current = window.scrollY
+    }
+  }, [scrollRef])
   const playable = (ids: string[]) => ids.map(videoById).filter((v): v is Video => Boolean(v?.embeddable))
 
   // For a collection without explicit sub-lists, treat the whole thing as one.

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useAppData } from '../../state/useAppData'
 import { useSession } from '../../state/useSession'
 import { HomeView } from './HomeView'
@@ -22,6 +22,8 @@ export function KidApp({ onExitToParent }: { onExitToParent: () => void }) {
   const { blacklistUsed, markBlacklistUsed } = useSession()
   const [picked, setPicked] = useState<Picked | null>(null)
   const [play, setPlay] = useState<PlayContext | null>(null)
+  // Home scroll position, preserved across navigation into a sub-list / player.
+  const homeScroll = useRef(0)
 
   const blacklist = data.blacklist ?? []
   const videoById = (id: string) => data.videos[id]
@@ -84,6 +86,7 @@ export function KidApp({ onExitToParent }: { onExitToParent: () => void }) {
           videoById={videoById}
           blacklist={blacklist}
           blacklistLocked={blacklistUsed}
+          scrollRef={homeScroll}
           onPickSub={(collectionId, subId) => setPicked({ collectionId, subId })}
           onExitToParent={onExitToParent}
         />
