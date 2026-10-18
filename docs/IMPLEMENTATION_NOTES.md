@@ -409,6 +409,89 @@ collections **by id**.
 
 ---
 
+## 11. YouTube-style start page (suggested feed)
+
+**Goal:** A start page with a mixed "suggested" feed; clicking a video plays it
+with the sidebar showing *that video's own list* (not a random mix).
+
+- [`StartPage`](../src/components/kid/StartPage.tsx) is the default landing view;
+  [`HomeView`](../src/components/kid/HomeView.tsx) (grouped collections) is reachable
+  via a **📚 Collections** / **⭐ For You** header toggle. Both preserve scroll (§ earlier).
+- **Feed** ([`buildFeed`](../src/components/kid/KidApp.tsx)): one shuffled queue per
+  non-blacklisted collection, then a greedy interleave that never places two
+  neighbours from the same collection; capped at 120; rebuilt (via `useMemo`) only
+  when the library/blacklist change. Blacklisted collections are excluded (they'd
+  bypass the one-per-session lock).
+- Each feed card carries its **source list** (sub-list, or the whole collection
+  when flat). Clicking opens the player with that list as `playlist`/sidebar — so
+  "suggestions" and Prev/Next stay within the same list.
+
+---
+
+## 12. VK Video support (step 1 — single videos)
+
+**Goal:** Play VK Video alongside YouTube. VK supports iframe embeds, but it's a
+different provider with no keyless metadata, so this is a cross-provider feature,
+not a drop-in.
+
+- **Model:** `Video.source?: 'youtube' | 'vk'` (absent = youtube; coerce copies
+  it through). For VK, `id` is the `"<oid>_<id>"` string. Schema updated.
+- **[`api/vk.ts`](../src/api/vk.ts):** `parseVkId` (from URL/raw), `vkEmbedUrl`
+  (`video_ext.php?...&js_api=1`), `loadVkApi` (loads VK's player JS once), and a
+  data-URI placeholder thumbnail (`VK_THUMB`) since VK gives no keyless thumbnail.
+- **[`VKPlayer`](../src/components/kid/VKPlayer.tsx):** VK iframe + VK's JS player
+  API, mapping STARTED/RESUMED/PLAYING→`setWatching(true)`, PAUSED→`false`,
+  ENDED→auto-advance/blacklist-finish, and mirroring `sessionPause` via play/pause
+  — so the session timer and auto-advance behave like YouTube. Degrades to plain
+  playback (untracked) if the VK API fails to load.
+- **[`PlayerView`](../src/components/kid/PlayerView.tsx):** routes to `VKPlayer`
+  when `video.source === 'vk'`, else YouTube (shared `handleEnded`).
+- **[`AddVideoForm`](../src/components/parent/AddVideoForm.tsx):** accepts VK links;
+  since there's no lookup, the parent types the title (manual).
+
+**Caveats / not done:** titles/thumbnails are manual (no VK API token);
+VK embeds can show ads and may be geo/consent-gated (a probe returned a 302);
+VK playlists (step 2) aren't extracted yet. VKPlayer couldn't be runtime-tested
+here — verify on a real device.
+
+---
+
+## 13. Playback with youtube.com blocked (nocookie embed + postMessage)
+
+**Goal:** The guest Wi-Fi blocks `youtube.com` at the router (on purpose, so
+"Watch on YouTube", the logo and title links go nowhere). That also broke
+playback, because `react-youtube` loads `www.youtube.com/iframe_api` and embeds
+from `www.youtube.com/embed`.
+
+- **Decision:** dropped `react-youtube`. [`api/ytEmbed.ts`](../src/api/ytEmbed.ts)
+  builds a plain `www.youtube-nocookie.com/embed/<id>?enablejsapi=1&origin=…`
+  iframe and speaks the IFrame API's postMessage protocol itself. We don't vendor
+  YouTube's API script, because a vendored copy would go stale without warning.
+- **Protocol (checked in headless Chrome, 2026-10-18):** send
+  `{"event":"listening","id","channel":"widget"}` (retried every 250 ms until
+  `onReady`, since messages sent before the embed loads are dropped). Replies are
+  JSON strings, with the payload **under `info`**: `onStateChange` → `info: <state>`,
+  `infoDelivery` → `info.playerState` / `info.videoData.video_id`, plus
+  `initialDelivery`, `apiInfoDelivery` and `alreadyInitialized`, which we ignore.
+  Accept messages only if `origin` is nocookie **and** `source` is our iframe.
+- **Whitelist inside the iframe:** [`YouTubePlayer`](../src/components/kid/YouTubePlayer.tsx)
+  stops the video and returns to the list as soon as the embed reports any
+  `video_id` other than the one requested. That is stricter than "any library
+  video", on purpose: a suggestion click inside the embed would otherwise
+  bypass blacklisted collections' one-per-session limit and the sidebar's own
+  list.
+- **End screen:** on state 0 the player sends `stopVideo`, and
+  [`PlayerView`](../src/components/kid/PlayerView.tsx) shows its own black
+  overlay (Watch again / Next / Pick another) over the stage, so YouTube's
+  suggestion grid is never clickable. The overlay also covers VK's end screen.
+- **Domains seen:** nocookie, `*.googlevideo.com`, `i.ytimg.com`, `yt3.ggpht.com`,
+  plus `www.google.com/js/th/…` (bot check), `jnn-pa.googleapis.com` (attestation),
+  `www.gstatic.com` / `fonts.gstatic.com` (icons/font). With those last ones
+  blocked, playback still worked in testing but the control icons failed to load,
+  and the bot check is likely to matter over time. **Don't block them.**
+
+---
+
 ## Conventions for this doc
 
 - One section per feature/decision; newest at the bottom.

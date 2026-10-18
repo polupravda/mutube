@@ -3,12 +3,12 @@ import { type AppData, coerceAppData, emptyAppData } from '../types'
 
 /**
  * Loads the library from, in order:
- *   1. the dev/preview endpoint (mutube.data.json working copy — see vite.config.ts), then
+ *   1. the dev/preview endpoint (serves mutube-library.json — see vite.config.ts), then
  *   2. the bundled `mutube-library.json` shipped into the build (static hosts / GitHub Pages).
  *
- * save() writes back to the dev endpoint; on a static host there is no endpoint,
- * so save() is a no-op (the deployed library is read-only — update it by
- * committing a new mutube-library.json and redeploying).
+ * save() writes back to the dev endpoint (mutube-library.json); on a static host
+ * there is no endpoint, so save() is a no-op (the deployed library is read-only —
+ * update it by committing a new mutube-library.json and redeploying).
  */
 const ENDPOINT = '/__data'
 const BUNDLED = `${import.meta.env.BASE_URL}mutube-library.json`
@@ -36,7 +36,7 @@ export class FileStorageAdapter implements StorageAdapter {
       await fetch(ENDPOINT, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data, null, 2),
+        body: JSON.stringify(data, null, 2) + '\n',
       })
     } catch {
       // No local data endpoint (e.g. static prod build) — nothing to persist to.

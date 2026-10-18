@@ -163,6 +163,9 @@ img.header-logo, .header-logo img {
 .thumb-wrap { position: relative; width: 100%; display: block; }
 .video-tile .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
 .video-tile .tile-name { padding: 12px; }
+/* Start-page feed card: title + a small "channel" (source list) label. */
+.feed-tile .tile-name { padding: 12px 12px 2px; }
+.feed-tile .tile-channel { color: var(--muted); font-size: 0.82rem; padding: 0 12px 12px; }
 
 .kid-empty {
   color: var(--ink); text-align: center; margin: auto; padding: 40px;
@@ -207,6 +210,12 @@ img.header-logo, .header-logo img {
 }
 .yt { width: 100%; height: 100%; }
 .yt-iframe { width: 100%; height: 100%; border: 0; }
+.player-overlay {
+  position: absolute; inset: 0; z-index: 2; background: #000; color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+}
+.player-overlay .big { font-size: 1.8rem; font-weight: 700; margin: 0; }
+.player-overlay-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .player-nav { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; background: #f3f4ff; }
 
 /* =========================== SESSION + BLACKLIST =========================== */

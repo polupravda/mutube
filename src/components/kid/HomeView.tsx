@@ -16,6 +16,7 @@ export function HomeView({
   blacklist,
   blacklistLocked,
   scrollRef,
+  onStart,
   onPickSub,
   onExitToParent,
 }: {
@@ -24,6 +25,7 @@ export function HomeView({
   blacklist: string[]
   blacklistLocked: boolean
   scrollRef: MutableRefObject<number>
+  onStart: () => void
   onPickSub: (collectionId: string, subId: string | null) => void
   onExitToParent: () => void
 }) {
@@ -59,6 +61,7 @@ export function HomeView({
         </span>
         <HeaderLogo />
         <span className="header-side header-right">
+          <button className="ghost" onClick={onStart} title="Suggested for you">⭐ <span className="btn-label">For You</span></button>
           {/* Subtle parent door, top corner, away from the fun stuff. */}
           <button className="parent-door" onClick={onExitToParent} aria-label="Parent area" title="Parent area">
             ⚙

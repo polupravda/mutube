@@ -2,9 +2,11 @@
 // state layer, and UI all share one source of truth.
 
 export type Video = {
-  /** YouTube video ID. Also the dedup key across collections. */
+  /** Video ID (dedup key). YouTube: the 11-char id. VK: "<oid>_<id>". */
   id: string
-  /** Original YouTube title. */
+  /** Video provider. Absent = 'youtube' (back-compat). */
+  source?: 'youtube' | 'vk'
+  /** Original title. */
   title: string
   /**
    * Parent-assigned display name. Defaults to the original title when not set.

@@ -1,15 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
-import YouTube, { type YouTubeProps, type YouTubePlayer } from 'react-youtube'
+import { useEffect, useState } from 'react'
 import { useAppData } from '../../state/useAppData'
 import { useSession } from '../../state/useSession'
 import { type Video, videoName } from '../../types'
 import { HeaderLogo } from './HeaderLogo'
 import { FloatingControls } from './FloatingControls'
+import { VKPlayer } from './VKPlayer'
+import { YouTubePlayer } from './YouTubePlayer'
 
 /**
  * Embedded player in a YouTube-style layout: the video on the left, the current
- * sub-list as a column on the right. Uses the official YouTube IFrame player
- * with its native controls.
+ * sub-list as a column on the right. YouTube plays in a plain
+ * youtube-nocookie.com iframe (no youtube.com requests) with its native controls.
+ * When a video ends, mutube's own overlay covers the stage so the embed's
+ * suggestion grid can't be clicked.
  *
  * Blacklisted collections hide the recommendations panel and consume the
  * session's one-video allowance when the video finishes. The session timer can
@@ -39,54 +42,38 @@ export function PlayerView({
   const { dispatch } = useAppData()
   const { sessionPause, setWatching } = useSession()
   const [errored, setErrored] = useState(false)
-  const playerRef = useRef<YouTubePlayer | null>(null)
+  const [ended, setEnded] = useState(false)
+  // Bumped by "Watch again" to remount the player.
+  const [replay, setReplay] = useState(0)
 
   const video = playlist[index]
   const hasPrev = index > 0
   const hasNext = index < playlist.length - 1
 
-  // Clear a prior error when the selection changes.
-  useEffect(() => setErrored(false), [video.id])
+  // Clear a prior error / end overlay when the selection changes.
+  useEffect(() => {
+    setErrored(false)
+    setEnded(false)
+  }, [video.id])
 
   // The session timer counts only while a video is actually playing — so freeze
   // it whenever the player view goes away (back to browsing).
   useEffect(() => () => setWatching(false), [setWatching])
 
-  // Pause during the session warning popup / when the session is over; resume after.
-  useEffect(() => {
-    const player = playerRef.current
-    if (!player) return
-    if (sessionPause) player.pauseVideo()
-    else player.playVideo()
-  }, [sessionPause])
-
-  const opts: YouTubeProps['opts'] = {
-    width: '100%',
-    height: '100%',
-    playerVars: {
-      autoplay: 1,
-      rel: 0, // limit "related" to the same channel
-      modestbranding: 1,
-      playsinline: 1,
-      iv_load_policy: 3, // hide annotations
-    },
-  }
-
-  const onReady: YouTubeProps['onReady'] = (e) => {
-    playerRef.current = e.target
-  }
-
-  // 1 = playing -> timer runs; anything else (paused/buffering/ended) -> frozen.
-  const onStateChange: YouTubeProps['onStateChange'] = (e) => {
-    setWatching(e.data === 1)
-  }
-
   // Error codes 101 & 150 = embedding disabled by owner; 100 = removed/private; 2 = bad id.
-  const onError: YouTubeProps['onError'] = (e) => {
-    if ([101, 150, 100, 2].includes(Number(e.data))) {
+  const onYouTubeError = (code: number) => {
+    if ([101, 150, 100, 2].includes(code)) {
       dispatch({ type: 'setVideoEmbeddable', videoId: video.id, embeddable: false })
     }
     setErrored(true)
+  }
+
+  // When a video ends: blacklisted collections use their one-per-session allowance;
+  // otherwise auto-advance to the next video.
+  const handleEnded = () => {
+    setEnded(true)
+    if (blacklisted) onBlacklistFinished()
+    else if (hasNext) onSelect(index + 1)
   }
 
   return (
@@ -106,22 +93,36 @@ export function PlayerView({
                 <p className="big">Oops — this video can’t play here. 😕</p>
                 <p>Pick another one from the list!</p>
               </div>
-            ) : (
-              <YouTube
-                key={video.id}
-                videoId={video.id}
-                opts={opts}
-                className="yt"
-                iframeClassName="yt-iframe"
-                onReady={onReady}
-                onStateChange={onStateChange}
-                onError={onError}
-                onEnd={() => {
-                  // Blacklisted: this used the session's one allowed video.
-                  if (blacklisted) onBlacklistFinished()
-                  else if (hasNext) onSelect(index + 1)
-                }}
+            ) : video.source === 'vk' ? (
+              <VKPlayer
+                key={`${video.id}-${replay}`}
+                vkId={video.id}
+                sessionPause={sessionPause}
+                onWatchingChange={setWatching}
+                onEnded={handleEnded}
+                onError={() => setErrored(true)}
               />
+            ) : (
+              <YouTubePlayer
+                key={`${video.id}-${replay}`}
+                videoId={video.id}
+                sessionPause={sessionPause}
+                onWatchingChange={setWatching}
+                onEnded={handleEnded}
+                onError={onYouTubeError}
+                onForeignVideo={onBack}
+              />
+            )}
+            {/* Covers the embed's end-screen suggestions so they can't be clicked. */}
+            {ended && !errored && (
+              <div className="player-overlay">
+                <p className="big">All done! 🎉</p>
+                <div className="player-overlay-actions">
+                  <button className="big-btn" onClick={() => { setEnded(false); setReplay((n) => n + 1) }}>↻ Watch again</button>
+                  {hasNext && <button className="big-btn" onClick={() => onSelect(index + 1)}>Next ▶</button>}
+                  <button className="big-btn" onClick={onBack}>Pick another</button>
+                </div>
+              </div>
             )}
           </div>
 

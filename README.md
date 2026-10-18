@@ -160,19 +160,27 @@ your device's kiosk feature:
   no compliant way to remove them.
 - **Some videos can't be embedded** (the owner disabled it). Mutube detects this
   and flags/greys those videos so they never break the kid view.
-- Mutube uses the **official YouTube IFrame player** — it never downloads or
-  re-hosts videos, which keeps it within YouTube's Terms of Service for personal
-  use.
+- Mutube uses YouTube's **official embed player** (on `youtube-nocookie.com`,
+  controlled over postMessage) — it never downloads or re-hosts videos, which
+  keeps it within YouTube's Terms of Service for personal use.
+- **Works with `youtube.com` blocked.** The player only needs
+  `youtube-nocookie.com`, `googlevideo.com`, `ytimg.com` and `ggpht.com`, so
+  you can block `youtube.com` at the router to kill "Watch on YouTube", the logo
+  and title links. Leave `google.com`, `gstatic.com` and `googleapis.com`
+  reachable — the embed uses them for icons and its bot check. If the embed
+  switches to any video other than the one picked (e.g. a suggestion click),
+  mutube stops it and returns to the list.
 
 ## Project layout
 
 ```
 src/
   api/youtube.ts            # parse video IDs, fetch metadata, format durations
+  api/ytEmbed.ts            # nocookie embed URL + postMessage player controller
   storage/                  # StorageAdapter + FileStorageAdapter, remoteSource, legacyMigration
   state/useAppData.tsx      # context + reducer + persistence + external source
   state/pin.ts              # PIN hashing (soft lock)
-  components/kid/           # HomeView, VideoGrid, PlayerView, HeaderLogo, FloatingControls
+  components/kid/           # HomeView, VideoGrid, PlayerView, YouTubePlayer, HeaderLogo, FloatingControls
   components/parent/        # AddVideoForm, CollectionManager, SettingsPanel
 scripts/                    # bulk import: extract IDs + merge into mutube-library.json
 schema/mutube.schema.json   # the portable library file format

@@ -38,8 +38,9 @@
       "required": ["id", "title", "channelTitle", "thumbnailUrl", "durationSeconds", "embeddable", "addedAt"],
       "additionalProperties": false,
       "properties": {
-        "id": { "type": "string", "description": "YouTube video ID; also the dedup key." },
-        "title": { "type": "string", "description": "Original YouTube title." },
+        "id": { "type": "string", "description": "Video ID / dedup key. YouTube: 11-char id. VK: \"<oid>_<id>\"." },
+        "source": { "enum": ["youtube", "vk"], "description": "Provider. Absent = youtube." },
+        "title": { "type": "string", "description": "Original title." },
         "alias": { "type": "string", "description": "Parent-assigned display name. Defaults to title when absent. The only field home search matches." },
         "channelTitle": { "type": "string" },
         "thumbnailUrl": { "type": "string" },

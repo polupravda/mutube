@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { useAppData } from '../../state/useAppData'
 import { fetchVideoMetadata, formatDuration, hasApiKey, parseVideoId } from '../../api/youtube'
+import { parseVkId, VK_THUMB } from '../../api/vk'
 import type { Video } from '../../types'
 
 /**
  * Paste a YouTube URL/ID -> fetch metadata (1 quota unit) -> preview -> add,
- * optionally straight into a collection.
+ * optionally straight into a collection. VK Video links are also accepted, but
+ * VK has no keyless metadata, so you type the title yourself.
  */
 export function AddVideoForm() {
   const { data, dispatch } = useAppData()
@@ -22,15 +24,32 @@ export function AddVideoForm() {
     e.preventDefault()
     setError('')
     setPreview(null)
-    const id = parseVideoId(input)
-    if (!id) {
+    const ytId = parseVideoId(input)
+    const vkId = ytId ? null : parseVkId(input)
+    if (!ytId && !vkId) {
       setStatus('error')
-      setError('That does not look like a YouTube link or video ID.')
+      setError('That does not look like a YouTube or VK video link.')
+      return
+    }
+    if (vkId) {
+      // VK has no keyless metadata — stub a preview; the parent types the title.
+      setPreview({
+        id: vkId,
+        source: 'vk',
+        title: '',
+        channelTitle: 'VK',
+        thumbnailUrl: VK_THUMB,
+        durationSeconds: 0,
+        embeddable: true,
+        addedAt: '',
+      })
+      setAlias(data.videos[vkId]?.alias ?? '')
+      setStatus('idle')
       return
     }
     setStatus('loading')
     try {
-      const video = await fetchVideoMetadata(id)
+      const video = await fetchVideoMetadata(ytId!)
       setPreview(video)
       // Pre-fill the alias with the original title; parent can override it.
       setAlias(data.videos[video.id]?.alias ?? video.title)
@@ -43,12 +62,20 @@ export function AddVideoForm() {
 
   function add() {
     if (!preview) return
-    // Alias defaults to the original title when left blank.
-    const video: Video = { ...preview, alias: alias.trim() || preview.title }
+    const name = alias.trim()
+    if (preview.source === 'vk' && !name) {
+      setError('Enter a title for this VK video.')
+      return
+    }
+    const video: Video =
+      preview.source === 'vk'
+        ? { ...preview, title: name, alias: name, addedAt: new Date().toISOString() }
+        : { ...preview, alias: name || preview.title }
     dispatch({ type: 'addVideo', video, collectionId: collectionId || undefined })
     setPreview(null)
     setInput('')
     setAlias('')
+    setError('')
     setStatus('idle')
   }
 
@@ -66,7 +93,7 @@ export function AddVideoForm() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste a YouTube link or video ID"
+          placeholder="Paste a YouTube or VK video link"
           autoFocus
         />
         <button type="submit" disabled={status === 'loading' || !input.trim()}>
@@ -80,9 +107,11 @@ export function AddVideoForm() {
         <div className="card preview">
           <img src={preview.thumbnailUrl} alt="" className="thumb" />
           <div className="preview-meta">
-            <h3>{preview.title}</h3>
+            <h3>{preview.source === 'vk' ? 'VK video' : preview.title}</h3>
             <p className="muted">
-              {preview.channelTitle} · {formatDuration(preview.durationSeconds)}
+              {preview.source === 'vk'
+                ? `VK · ${preview.id} · enter a title below`
+                : `${preview.channelTitle} · ${formatDuration(preview.durationSeconds)}`}
             </p>
             {!preview.embeddable && (
               <p className="error">⚠ This video can’t be embedded — it won’t play in Mutube.</p>

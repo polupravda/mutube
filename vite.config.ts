@@ -4,18 +4,17 @@ import { copyFile, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 /**
- * Dev/preview-only persistence: serves a single portable JSON file
- * (mutube.data.json at the project root) over a tiny endpoint so the running
- * app can read and write it like a backend.
+ * Dev/preview-only persistence: serves the library JSON (mutube-library.json —
+ * the same file the scripts edit and the build bundles) over a tiny endpoint so
+ * the running app reads and writes one source of truth.
  *
  *   GET  /__data  -> file contents, or 204 when the file doesn't exist yet
  *   PUT  /__data  -> overwrite the file with the request body
  *
- * This is intentionally test-only — a static production build has no server, so
- * FileStorageAdapter degrades to in-memory there. The file format is documented
- * in schema/mutube.schema.json.
+ * A static production build has no server, so FileStorageAdapter falls back to
+ * the bundled mutube-library.json there. Format: schema/mutube.schema.json.
  */
-function localDataFile(fileName = 'mutube.data.json'): PluginOption {
+function localDataFile(fileName = 'mutube-library.json'): PluginOption {
   const filePath = path.resolve(process.cwd(), fileName)
 
   const handler: Connect.NextHandleFunction = (req, res, next) => {
