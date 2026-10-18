@@ -7412,7 +7412,7 @@
     },
     {
       "id": "338915c6-3bfe-40fb-9e76-abaad013ad2e",
-      "name": "How Is It Made? (Maddie Moate)",
+      "name": "Maddie Moate",
       "videoIds": [
         "23ZgofVpGpQ",
         "XZvdHPMUgug",
@@ -7428,33 +7428,19 @@
         "XDA4a-uKbTA",
         "XgnwNb2NKlU",
         "57a30ObPBqc",
-        "M7h9xQJ21pM"
-      ]
-    },
-    {
-      "id": "f38e32d5-0d7a-48d1-a14b-a56647a8969d",
-      "name": "How Does It Work? (Maddie Moate)",
-      "videoIds": [
+        "M7h9xQJ21pM",
         "MVKnbwy9OaY",
         "5PuesizUzHc",
         "vaM3buQ--kM",
         "UHqdO8P39Zs",
         "bKGr8nGwmi4",
         "ngjKY8BehS4",
-        "nJAbo-F6tO4"
-      ]
-    },
-    {
-      "id": "5709a8ac-9850-42c6-a116-399dc863e83d",
-      "name": "STEM Adventures (Maddie Moate)",
-      "videoIds": [
+        "nJAbo-F6tO4",
         "RqBKSeCmDho",
-        "Qd8Eb8ULDLw",
         "cf-JUz3gqdk",
         "Fs_kX0wOHf4",
         "SaTx-nQlXM4",
         "zgsT3EuoFAM",
-        "UHqdO8P39Zs",
         "Duc6pN5Qb_0",
         "9WAvsrjrSWA",
         "sUwWGuOmuzo",
@@ -7465,6 +7451,63 @@
         "zkRsvxLr0Ak",
         "YTdOObu_r8s",
         "ZD24gGHXdFk"
+      ],
+      "subCollections": [
+        {
+          "id": "338915c6-3bfe-40fb-9e76-abaad013ad2e:how-is-it-made",
+          "name": "How Is It Made?",
+          "videoIds": [
+            "23ZgofVpGpQ",
+            "XZvdHPMUgug",
+            "d3VTyrRBDX8",
+            "Mklgs8T2714",
+            "TCzMTuERdgQ",
+            "OMg_hBRD84U",
+            "Qd8Eb8ULDLw",
+            "kbQsMgCIJT4",
+            "N8kYsF2sBxc",
+            "niC43e1Ldlg",
+            "ePf-FFZZH3E",
+            "XDA4a-uKbTA",
+            "XgnwNb2NKlU",
+            "57a30ObPBqc",
+            "M7h9xQJ21pM"
+          ]
+        },
+        {
+          "id": "338915c6-3bfe-40fb-9e76-abaad013ad2e:how-does-it-work",
+          "name": "How Does It Work?",
+          "videoIds": [
+            "MVKnbwy9OaY",
+            "5PuesizUzHc",
+            "vaM3buQ--kM",
+            "UHqdO8P39Zs",
+            "bKGr8nGwmi4",
+            "ngjKY8BehS4",
+            "nJAbo-F6tO4"
+          ]
+        },
+        {
+          "id": "338915c6-3bfe-40fb-9e76-abaad013ad2e:stem-adventures",
+          "name": "STEM Adventures",
+          "videoIds": [
+            "RqBKSeCmDho",
+            "cf-JUz3gqdk",
+            "Fs_kX0wOHf4",
+            "SaTx-nQlXM4",
+            "zgsT3EuoFAM",
+            "Duc6pN5Qb_0",
+            "9WAvsrjrSWA",
+            "sUwWGuOmuzo",
+            "G4OoIb9Hhw0",
+            "vkUBjE4Gs6s",
+            "dIvXnqQaSwM",
+            "IX4-PxBlacs",
+            "zkRsvxLr0Ak",
+            "YTdOObu_r8s",
+            "ZD24gGHXdFk"
+          ]
+        }
       ]
     },
     {
@@ -8197,51 +8240,6 @@
       ]
     },
     {
-      "id": "213507eb-f86b-4f24-944a-dd953555cf5f",
-      "name": "Brain Games",
-      "videoIds": [
-        "zwNXQ6fNnno",
-        "qhKtncXKy8o",
-        "UAqbU6fooxU",
-        "b8EiJp7rmI0",
-        "fa9Gy2q3iZQ",
-        "kfmqZlJVV_M",
-        "Nb_Ynh6M_yA"
-      ]
-    },
-    {
-      "id": "a17b1735-63e9-4033-9648-6ee51f39ab0e",
-      "name": "Positive Energy",
-      "videoIds": [
-        "TXr69MV_flw",
-        "_fCa2cntJ2M",
-        "s_mmst2py9A",
-        "7uuwXpdoK0c",
-        "JByo9z6o8kY"
-      ]
-    },
-    {
-      "id": "e0204972-a5b8-4b89-8001-8e044f43b001",
-      "name": "How Things Work",
-      "videoIds": [
-        "cfZLumL_JI4",
-        "HlvK6DLwCz4",
-        "U1B7erHd6Ko",
-        "Ey6S3rKH_o4",
-        "ztSiCIYe1DE",
-        "YOGeEcebQ3M",
-        "Jo6rcffwQLc",
-        "RDRU064CZNU",
-        "W5RFoowvGkw",
-        "12xX56v4WxI",
-        "3NcY9ijWVqg",
-        "LMSt2uKZg3Q",
-        "h4ELJOzozX0",
-        "H1doFO_Q0Ro",
-        "2GpqH0eB1x0"
-      ]
-    },
-    {
       "id": "fa9b9675-c2b9-4345-b93e-6d5a8b733814",
       "name": "Twisters IRL",
       "videoIds": [
@@ -8338,7 +8336,25 @@
         "OwR3KWmJwYg",
         "gBnEg5tKDUg",
         "SrO8YNnG8ag",
-        "1WBcKryn_B8"
+        "1WBcKryn_B8",
+        "zwNXQ6fNnno",
+        "qhKtncXKy8o",
+        "UAqbU6fooxU",
+        "b8EiJp7rmI0",
+        "fa9Gy2q3iZQ",
+        "Nb_Ynh6M_yA",
+        "TXr69MV_flw",
+        "_fCa2cntJ2M",
+        "s_mmst2py9A",
+        "JByo9z6o8kY",
+        "HlvK6DLwCz4",
+        "U1B7erHd6Ko",
+        "Ey6S3rKH_o4",
+        "ztSiCIYe1DE",
+        "YOGeEcebQ3M",
+        "Jo6rcffwQLc",
+        "RDRU064CZNU",
+        "W5RFoowvGkw"
       ],
       "subCollections": [
         {
@@ -8440,6 +8456,42 @@
             "gBnEg5tKDUg",
             "SrO8YNnG8ag",
             "1WBcKryn_B8"
+          ]
+        },
+        {
+          "id": "b99bbf41-e237-4d31-ba12-8d72f2094dbe:brain-games",
+          "name": "Brain Games",
+          "videoIds": [
+            "zwNXQ6fNnno",
+            "qhKtncXKy8o",
+            "UAqbU6fooxU",
+            "b8EiJp7rmI0",
+            "fa9Gy2q3iZQ",
+            "Nb_Ynh6M_yA"
+          ]
+        },
+        {
+          "id": "b99bbf41-e237-4d31-ba12-8d72f2094dbe:positive-energy",
+          "name": "Positive Energy",
+          "videoIds": [
+            "TXr69MV_flw",
+            "_fCa2cntJ2M",
+            "s_mmst2py9A",
+            "JByo9z6o8kY"
+          ]
+        },
+        {
+          "id": "b99bbf41-e237-4d31-ba12-8d72f2094dbe:how-things-work",
+          "name": "How Things Work",
+          "videoIds": [
+            "HlvK6DLwCz4",
+            "U1B7erHd6Ko",
+            "Ey6S3rKH_o4",
+            "ztSiCIYe1DE",
+            "YOGeEcebQ3M",
+            "Jo6rcffwQLc",
+            "RDRU064CZNU",
+            "W5RFoowvGkw"
           ]
         }
       ]
@@ -46654,16 +46706,6 @@
       "addedAt": "2026-10-02T06:04:48.940939Z",
       "alias": "Will YOUR Team Win?? 🏅The Science of Competition 🔬| Brain Games 🧠🤓| Full Episode |@natgeokids​"
     },
-    "kfmqZlJVV_M": {
-      "id": "kfmqZlJVV_M",
-      "title": "Learn How a Zipper Works! 🤐 | Brain Games | @natgeokids",
-      "channelTitle": "Brain Games",
-      "thumbnailUrl": "https://i.ytimg.com/vi/kfmqZlJVV_M/mqdefault.jpg",
-      "durationSeconds": 16,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "Learn How a Zipper Works! 🤐 | Brain Games | @natgeokids"
-    },
     "Nb_Ynh6M_yA": {
       "id": "Nb_Ynh6M_yA",
       "title": "Brain Games 🧠🤓 | Full Episode Compilation | 40 Minutes | @natgeokids",
@@ -46704,16 +46746,6 @@
       "addedAt": "2026-10-02T06:04:48.940939Z",
       "alias": "Using Restaurants to Power an Entire City?! 🍽️🔌 | Positive Energy Full Episode | @natgeokids"
     },
-    "7uuwXpdoK0c": {
-      "id": "7uuwXpdoK0c",
-      "title": "High Tech Solar Powered House 😲☀️ | Positive Energy | @natgeokids",
-      "channelTitle": "Positive Energy",
-      "thumbnailUrl": "https://i.ytimg.com/vi/7uuwXpdoK0c/mqdefault.jpg",
-      "durationSeconds": 35,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "High Tech Solar Powered House 😲☀️ | Positive Energy | @natgeokids"
-    },
     "JByo9z6o8kY": {
       "id": "JByo9z6o8kY",
       "title": "A Power‑Making House and an Electric Airplane!💡✈️ | Positive Energy Full Episode | @natgeokids",
@@ -46723,16 +46755,6 @@
       "embeddable": true,
       "addedAt": "2026-10-02T06:04:48.940939Z",
       "alias": "A Power‑Making House and an Electric Airplane!💡✈️ | Positive Energy Full Episode | @natgeokids"
-    },
-    "cfZLumL_JI4": {
-      "id": "cfZLumL_JI4",
-      "title": "\"How Things Work\" Sneak Peek | How Things Work with Kamri Noel",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/cfZLumL_JI4/mqdefault.jpg",
-      "durationSeconds": 53,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "\"How Things Work\" Sneak Peek | How Things Work with Kamri Noel"
     },
     "HlvK6DLwCz4": {
       "id": "HlvK6DLwCz4",
@@ -46813,66 +46835,6 @@
       "embeddable": true,
       "addedAt": "2026-10-02T06:04:48.940939Z",
       "alias": "How Trebuchets Work | How Things Work with Kamri Noel"
-    },
-    "12xX56v4WxI": {
-      "id": "12xX56v4WxI",
-      "title": "How Things Work | Submarines, 3D Printers, Popcorn & MORE | Nat Geo Kids Compilation | @NatGeoKids",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/12xX56v4WxI/mqdefault.jpg",
-      "durationSeconds": 1187,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "How Things Work | Submarines, 3D Printers, Popcorn & MORE | Nat Geo Kids Compilation | @NatGeoKids"
-    },
-    "3NcY9ijWVqg": {
-      "id": "3NcY9ijWVqg",
-      "title": "IT'S popCORN! 🍿🌽 Did you know it was made like that?",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/3NcY9ijWVqg/mqdefault.jpg",
-      "durationSeconds": 56,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "IT'S popCORN! 🍿🌽 Did you know it was made like that?"
-    },
-    "LMSt2uKZg3Q": {
-      "id": "LMSt2uKZg3Q",
-      "title": "Learn How Lava Lamps Work! 🤯🌋 | How Things Work | @natgeokids",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/LMSt2uKZg3Q/mqdefault.jpg",
-      "durationSeconds": 156,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "Learn How Lava Lamps Work! 🤯🌋 | How Things Work | @natgeokids"
-    },
-    "h4ELJOzozX0": {
-      "id": "h4ELJOzozX0",
-      "title": "Learn How Gecko Feet Work! 🦎 | How Things Work | @natgeokids",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/h4ELJOzozX0/mqdefault.jpg",
-      "durationSeconds": 128,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "Learn How Gecko Feet Work! 🦎 | How Things Work | @natgeokids"
-    },
-    "H1doFO_Q0Ro": {
-      "id": "H1doFO_Q0Ro",
-      "title": "Learn How 3-D Printers Work! 🖨️🤔 | How Things Work | @natgeokids",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/H1doFO_Q0Ro/mqdefault.jpg",
-      "durationSeconds": 146,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "Learn How 3-D Printers Work! 🖨️🤔 | How Things Work | @natgeokids"
-    },
-    "2GpqH0eB1x0": {
-      "id": "2GpqH0eB1x0",
-      "title": "Learn How Fitness Trackers Work! 💪🏋️‍♂️ | How Things Work | Nat Geo Kids",
-      "channelTitle": "How Things Work",
-      "thumbnailUrl": "https://i.ytimg.com/vi/2GpqH0eB1x0/mqdefault.jpg",
-      "durationSeconds": 94,
-      "embeddable": true,
-      "addedAt": "2026-10-02T06:04:48.940939Z",
-      "alias": "Learn How Fitness Trackers Work! 💪🏋️‍♂️ | How Things Work | Nat Geo Kids"
     },
     "wycUrtkRXfE": {
       "id": "wycUrtkRXfE",
@@ -55074,14 +55036,11 @@
     "UAqbU6fooxU",
     "b8EiJp7rmI0",
     "fa9Gy2q3iZQ",
-    "kfmqZlJVV_M",
     "Nb_Ynh6M_yA",
     "TXr69MV_flw",
     "_fCa2cntJ2M",
     "s_mmst2py9A",
-    "7uuwXpdoK0c",
     "JByo9z6o8kY",
-    "cfZLumL_JI4",
     "HlvK6DLwCz4",
     "U1B7erHd6Ko",
     "Ey6S3rKH_o4",
@@ -55090,12 +55049,6 @@
     "Jo6rcffwQLc",
     "RDRU064CZNU",
     "W5RFoowvGkw",
-    "12xX56v4WxI",
-    "3NcY9ijWVqg",
-    "LMSt2uKZg3Q",
-    "h4ELJOzozX0",
-    "H1doFO_Q0Ro",
-    "2GpqH0eB1x0",
     "wycUrtkRXfE",
     "PG8dYK2wx6I",
     "Nfnd7643ut0",

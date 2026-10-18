@@ -3,6 +3,7 @@ import { type Collection, type SubCollection, type Video } from '../../types'
 import { FloatingControls } from './FloatingControls'
 import { HeaderLogo } from './HeaderLogo'
 import { SessionControls } from './SessionControls'
+import { ViewToggle } from './ViewToggle'
 
 /**
  * Kid home screen: collections only. Each collection is shown as a section with
@@ -61,13 +62,14 @@ export function HomeView({
         </span>
         <HeaderLogo onHome={onStart} />
         <span className="header-side header-right">
-          <button className="ghost" onClick={onStart} title="Suggested for you">⭐ <span className="btn-label">For You</span></button>
           {/* Subtle parent door, top corner, away from the fun stuff. */}
           <button className="parent-door" onClick={onExitToParent} aria-label="Parent area" title="Parent area">
             ⚙
           </button>
         </span>
       </header>
+
+      <ViewToggle target="mix" onClick={onStart} />
 
       {sections.length === 0 ? (
         <div className="kid-empty">
