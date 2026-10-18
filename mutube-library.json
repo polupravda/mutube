@@ -625,7 +625,8 @@
         "M4MakEFlZ6k",
         "Qfl8M9H6wZ4",
         "UglDhUBsj0k",
-        "q16nsP6Joq4"
+        "q16nsP6Joq4",
+        "-dKDf6im0C4"
       ],
       "subCollections": [
         {
@@ -833,6 +834,13 @@
             "csi2iPXqphE",
             "LFY7CK0V8ak",
             "ZY5_H8iuNog"
+          ]
+        },
+        {
+          "id": "672ec185-ee26-458a-b09a-4c229a0fd0a0:season-9",
+          "name": "Season 9",
+          "videoIds": [
+            "-dKDf6im0C4"
           ]
         },
         {
@@ -47872,6 +47880,16 @@
       "embeddable": true,
       "addedAt": "2026-10-18T12:05:42.337Z",
       "alias": "Boil Water at Room Temperature! - Hydrostatics"
+    },
+    "-dKDf6im0C4": {
+      "id": "-dKDf6im0C4",
+      "title": "The Rise of Infinaughty! Full 25-Minute Movie (All 5 Episodes) | Numberblocks S9",
+      "channelTitle": "Numberblocks",
+      "thumbnailUrl": "https://i.ytimg.com/vi/-dKDf6im0C4/mqdefault.jpg",
+      "durationSeconds": 1398,
+      "embeddable": true,
+      "addedAt": "2026-10-18T12:35:57.738Z",
+      "alias": "The Rise of Infinaughty! Full 25-Minute Movie (All 5 Episodes) | Numberblocks S9"
     }
   },
   "videoOrder": [
@@ -51796,7 +51814,8 @@
     "UOHURuAf5iY",
     "iMn7dq7B1oo",
     "NjoMoH51UZc",
-    "933XNdClFrc"
+    "933XNdClFrc",
+    "-dKDf6im0C4"
   ],
   "blacklist": [
     "f37270ba-74ce-4b46-bea1-a5fc23817dfd"
