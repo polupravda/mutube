@@ -59,7 +59,7 @@ export function HomeView({
         <span className="header-side">
           <SessionControls />
         </span>
-        <HeaderLogo />
+        <HeaderLogo onHome={onStart} />
         <span className="header-side header-right">
           <button className="ghost" onClick={onStart} title="Suggested for you">⭐ <span className="btn-label">For You</span></button>
           {/* Subtle parent door, top corner, away from the fun stuff. */}

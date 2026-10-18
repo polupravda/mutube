@@ -104,6 +104,18 @@ code { background: #eef0ff; padding: 1px 5px; border-radius: 5px; }
 /* Identical back button across pages: white, dark-blue icon. */
 .fab-back { top: 14px; left: 14px; background: #fff; color: var(--ink); }
 .fab-top { bottom: 20px; right: 20px; background: var(--grad-blue); }
+/* Start page: always-visible "Collections" pill, bottom-centre. Green so it
+   stands apart from the blue to-top button. */
+.fab-collections {
+  position: fixed; z-index: 50; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px;
+  font-size: 1.2rem; background: var(--grad-green);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.fab-collections:active { transform: translateX(-50%) translateY(2px); }
+/* Keep the last feed row clear of the pill. */
+.kid-home:has(.fab-collections) { padding-bottom: 96px; }
 
 /* Header logo: in flow (not sticky), horizontally centered via equal side
    slots. The floating Back button sits over the left slot on sub-pages. */

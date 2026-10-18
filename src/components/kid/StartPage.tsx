@@ -45,12 +45,18 @@ export function StartPage({
         <span className="header-side">
           <SessionControls />
         </span>
-        <HeaderLogo />
+        {/* Already home: the logo just scrolls back to the top. */}
+        <HeaderLogo onHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         <span className="header-side header-right">
-          <button className="ghost" onClick={onBrowse} title="Browse collections">📚 <span className="btn-label">Collections</span></button>
           <button className="parent-door" onClick={onExitToParent} aria-label="Parent area" title="Parent area">⚙</button>
         </span>
       </header>
+
+      {/* Fixed so it's always one tap away while scrolling the feed. */}
+      <button className="fab-collections" onClick={onBrowse}>
+        <CollectionsIcon />
+        Collections
+      </button>
 
       {feed.length === 0 ? (
         <div className="kid-empty">
@@ -74,5 +80,16 @@ export function StartPage({
         </>
       )}
     </div>
+  )
+}
+
+/** Stacked cards: a "browse collections" glyph. */
+function CollectionsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="9" width="18" height="12" rx="2.5" fill="currentColor" fillOpacity="0.25" />
+      <path d="M5.5 6h13M8 3h8" />
+      <path d="M10.5 12.5v5l4-2.5z" fill="currentColor" />
+    </svg>
   )
 }
